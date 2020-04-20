@@ -4,7 +4,8 @@
 \name{boys}
 \alias{boys}
 \title{Growth of Dutch boys}
-\format{A data frame with 748 rows on the following 9 variables: \describe{
+\format{
+A data frame with 748 rows on the following 9 variables: \describe{
 \item{age}{Decimal age (0-21 years)} 
 \item{hgt}{Height (cm)}
 \item{wgt}{Weight (kg)} 
@@ -13,7 +14,8 @@
 \item{gen}{Genital Tanner stage (G1-G5)} 
 \item{phb}{Pubic hair (Tanner P1-P6)}
 \item{tv}{Testicular volume (ml)} 
-\item{reg}{Region (north, east, west, south, city)} }}
+\item{reg}{Region (north, east, west, south, city)} }
+}
 \source{
 Fredriks, A.M,, van Buuren, S., Burgmeijer, R.J., Meulmeester JF,
 Beuker, R.J., Brugman, E., Roede, M.J., Verloove-Vanhorick, S.P., Wit, J.M.
@@ -34,7 +36,6 @@ factors. \code{reg} is a factor.
 }
 \examples{
 
-
 # create two imputed data sets
 imp <- mice(boys, m=1, maxit=2)
 z <- complete(imp, 1)
@@ -49,11 +50,10 @@ plot(z$bmi,z$wgt/(z$hgt/100)^2, col=mdc(1:2)[1+is.na(boys$bmi)],
 xlab = "Imputed BMI", ylab="Calculated BMI")   
 
 # also, BMI distributions are somewhat different
-require(MASS)
 oldpar <- par(mfrow=c(1,2))
-truehist(z$bmi[!is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,
+MASS::truehist(z$bmi[!is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,
 col=mdc(1),xlab="BMI observed")
-truehist(z$bmi[is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,
+MASS::truehist(z$bmi[is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,
 col=mdc(2),xlab="BMI imputed")
 par(oldpar)
 
@@ -72,9 +72,9 @@ ylab="Calculated BMI")
 
 # and compare distributions
 oldpar <- par(mfrow=c(1,2))
-truehist(z2$bmi[!is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,col=mdc(1),
+MASS::truehist(z2$bmi[!is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,col=mdc(1),
 xlab="BMI observed")
-truehist(z2$bmi[is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,col=mdc(2),
+MASS::truehist(z2$bmi[is.na(boys$bmi)],h=1,xlim=c(10,30),ymax=0.25,col=mdc(2),
 xlab="BMI imputed")
 par(oldpar)
 

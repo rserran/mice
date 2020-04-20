@@ -14,7 +14,7 @@
 #'   \item{\code{ID}}{a numeric vector giving the ID of patient}
 #'   \item{\code{outcome}}{a numeric vector giving the response 
 #'   (0=none or mild seperation, 1=moderate or severe)}
-#'   \item{\code{treatment}}{a numeric vector giving the treatment gropup}
+#'   \item{\code{treatment}}{a numeric vector giving the treatment group}
 #'   \item{\code{month}}{a numeric vector giving the time of the visit 
 #'   (not exactly monthly intervals hence not round numbers)}
 #'   \item{\code{visit}}{a numeric vector giving the number of the visit}
@@ -38,6 +38,7 @@
 #'Imputation of Missing Data. Second Edition.}} Chapman & Hall/CRC.
 #'Boca Raton, FL.
 #' @keywords datasets
+#' @seealso \code{\link{toenail2}}
 #' @details This dataset was copied from the \code{DPpackage}, which is 
 #' scheduled to be discontinued from CRAN in August 2019.
 NULL

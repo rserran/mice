@@ -1,41 +1,11 @@
-# brms
-
-<details>
-
-* Version: 2.10.0
-* Source code: https://github.com/cran/brms
-* URL: https://github.com/paul-buerkner/brms, http://discourse.mc-stan.org
-* BugReports: https://github.com/paul-buerkner/brms/issues
-* Date/Publication: 2019-08-29 15:50:07 UTC
-* Number of recursive dependencies: 168
-
-Run `revdep_details(,"brms")` for more info
-
-</details>
-
-## Newly broken
-
-*   R CMD check timed out
-    
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.6Mb
-      sub-directories of 1Mb or more:
-        R     4.1Mb
-        doc   2.6Mb
-    ```
-
 # dynr
 
 <details>
 
-* Version: 0.1.15-1
+* Version: 0.1.15-25
 * Source code: https://github.com/cran/dynr
-* Date/Publication: 2019-10-05 06:50:02 UTC
-* Number of recursive dependencies: 120
+* Date/Publication: 2020-02-11 19:10:05 UTC
+* Number of recursive dependencies: 119
 
 Run `revdep_details(,"dynr")` for more info
 
@@ -75,60 +45,6 @@ ERROR: configuration failed for package ‘dynr’
 * removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/dynr/old/dynr.Rcheck/dynr’
 
 ```
-# Hmisc
-
-<details>
-
-* Version: 4.3-0
-* Source code: https://github.com/cran/Hmisc
-* URL: http://biostat.mc.vanderbilt.edu/Hmisc, https://github.com/harrelfe/Hmisc
-* Date/Publication: 2019-11-07 19:20:02 UTC
-* Number of recursive dependencies: 121
-
-Run `revdep_details(,"Hmisc")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘Hmisc’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Hmisc/new/Hmisc.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘Hmisc’ ...
-** package ‘Hmisc’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-/usr/local/opt/llvm/bin/clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c Hmisc.c -o Hmisc.o
-gfortran  -fPIC  -Wall -g -O2  -c cidxcn.f -o cidxcn.o
-gfortran-4.2: error trying to exec '/usr/local/bin/i686-apple-darwin8-gfortran-4.2': execvp: Bad CPU type in executable
-make: *** [cidxcn.o] Error 255
-ERROR: compilation failed for package ‘Hmisc’
-* removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Hmisc/new/Hmisc.Rcheck/Hmisc’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘Hmisc’ ...
-** package ‘Hmisc’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-/usr/local/opt/llvm/bin/clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c Hmisc.c -o Hmisc.o
-gfortran  -fPIC  -Wall -g -O2  -c cidxcn.f -o cidxcn.o
-gfortran-4.2: error trying to exec '/usr/local/bin/i686-apple-darwin8-gfortran-4.2': execvp: Bad CPU type in executable
-make: *** [cidxcn.o] Error 255
-ERROR: compilation failed for package ‘Hmisc’
-* removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Hmisc/old/Hmisc.Rcheck/Hmisc’
-
-```
 # MissingDataGUI
 
 <details>
@@ -136,7 +52,7 @@ ERROR: compilation failed for package ‘Hmisc’
 * Version: 0.2-5
 * Source code: https://github.com/cran/MissingDataGUI
 * Date/Publication: 2016-04-25 08:58:53
-* Number of recursive dependencies: 103
+* Number of recursive dependencies: 104
 
 Run `revdep_details(,"MissingDataGUI")` for more info
 
@@ -244,66 +160,5 @@ In fun(libname, pkgname) :
 Execution halted
 ERROR: lazy loading failed for package ‘MissingDataGUI’
 * removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/MissingDataGUI/old/MissingDataGUI.Rcheck/MissingDataGUI’
-
-```
-# Replication
-
-<details>
-
-* Version: 0.1.1
-* Source code: https://github.com/cran/Replication
-* Date/Publication: 2019-08-01 14:50:02 UTC
-* Number of recursive dependencies: 107
-
-Run `revdep_details(,"Replication")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘Replication’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Replication/new/Replication.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘Replication’ ...
-** package ‘Replication’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-Error: .onLoad failed in loadNamespace() for 'rjags', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so':
-  dlopen(/Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so
-  Reason: image not found
-Execution halted
-ERROR: lazy loading failed for package ‘Replication’
-* removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Replication/new/Replication.Rcheck/Replication’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘Replication’ ...
-** package ‘Replication’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** byte-compile and prepare package for lazy loading
-Error: .onLoad failed in loadNamespace() for 'rjags', details:
-  call: dyn.load(file, DLLpath = DLLpath, ...)
-  error: unable to load shared object '/Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so':
-  dlopen(/Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
-  Referenced from: /Users/buurensv/Dropbox/Package/mice/mice/revdep/library.noindex/Replication/rjags/libs/rjags.so
-  Reason: image not found
-Execution halted
-ERROR: lazy loading failed for package ‘Replication’
-* removing ‘/Users/buurensv/Dropbox/Package/mice/mice/revdep/checks.noindex/Replication/old/Replication.Rcheck/Replication’
 
 ```
