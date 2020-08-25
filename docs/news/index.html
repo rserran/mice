@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.3</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/stefvanbuuren/mice/">
+  <a href="https://github.com/amices/mice/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -123,38 +123,114 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/stefvanbuuren/mice/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <small>Source: <a href='https://github.com/amices/mice/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="mice-3-9-0" class="section level1">
-<h1 class="page-header" data-toc-text="3.9.0">
-<a href="#mice-3-9-0" class="anchor"></a>mice 3.9.0<small> Unreleased </small>
+    <div id="mice-3113" class="section level1">
+<h1 class="page-header" data-toc-text="3.11.3">
+<a href="#mice-3113" class="anchor"></a>mice 3.11.3<small> Unreleased </small>
+</h1>
+<ul>
+<li>Styles all sources files with styler</li>
+<li>Improves consistency in code and documentation</li>
+<li>Moves internally defined functions to global namespace</li>
+<li>Solves bug in internal <code>sum.scores()</code>
+</li>
+<li>Adds deprecated messages to <code><a href="../reference/lm.mids.html">lm.mids()</a></code>, <code><a href="../reference/glm.mids.html">glm.mids()</a></code>, <code><a href="../reference/pool.compare.html">pool.compare()</a></code>
+</li>
+<li>Removes <code>.pmm.match()</code> and <code>expandcov()</code>
+</li>
+<li>Strips out all <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> calls placed just before end-of-function</li>
+<li>Remove all trailing spaces</li>
+</ul>
+</div>
+    <div id="mice-3112" class="section level1">
+<h1 class="page-header" data-toc-text="3.11.2">
+<a href="#mice-3112" class="anchor"></a>mice 3.11.2<small> Unreleased </small>
+</h1>
+<ul>
+<li>Repairs a bug in the routine for finding the <code>printFlag</code> value (<a href='https://github.com/amices/mice/issues/258'>#258</a>)</li>
+</ul>
+</div>
+    <div id="mice-3111" class="section level1">
+<h1 class="page-header" data-toc-text="3.11.1">
+<a href="#mice-3111" class="anchor"></a>mice 3.11.1<small> Unreleased </small>
+</h1>
+<ul>
+<li>Update URL’s after transfer to organisation <code>amices</code>
+</li>
+</ul>
+</div>
+    <div id="mice-3110" class="section level1">
+<h1 class="page-header" data-toc-text="3.11.0">
+<a href="#mice-3110" class="anchor"></a>mice 3.11.0<small> 2020-08-05 </small>
 </h1>
 <div id="major-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h2>
 <ul>
-<li>The <code><a href="../reference/D3.html">D3()</a></code> function in <code>mice</code> gave incorrect results. This version solves a problem in the calculation of the <code>D3</code>-statistic. See <a href='https://github.com/stefvanbuuren/mice/issues/226'>#226</a> and <a href='https://github.com/stefvanbuuren/mice/issues/228'>#228</a> for more details. The documentation explains why results from <code><a href="../reference/D3.html">mice::D3()</a></code> and <code><a href="https://rdrr.io/pkg/mitml/man/testModels.html">mitml::testModels()</a></code> may differ.</li>
-<li>The <code><a href="../reference/pool.html">pool()</a></code> function is now more forgiving when there is no <code>glance()</code> function (<a href='https://github.com/stefvanbuuren/mice/issues/233'>#233</a>)</li>
-<li>It is possible to bypass <code>remove.lindep()</code> by setting <code>eps = 0</code> (<a href='https://github.com/stefvanbuuren/mice/issues/225'>#225</a>)</li>
+<li>The Cox model does not return <code>df.residual</code>, which caused problematic behavior in the <code><a href="../reference/D1.html">D1()</a></code>, <code><a href="../reference/D2.html">D2()</a></code>, <code><a href="../reference/D3.html">D3()</a></code>, <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> and <code><a href="../reference/pool.html">pool()</a></code>. <code>mice</code> now extracts the relevant information from other parts of the objects returned by <code><a href="https://rdrr.io/pkg/survival/man/coxph.html">survival::coxph()</a></code>, which solves long-standing issues with the integration of the Cox model (<a href='https://github.com/amices/mice/issues/246'>#246</a>).</li>
+<li>Adds missing <code>Rccp</code> dependency to work with <code>tidyr 1.1.1</code> (<a href='https://github.com/amices/mice/issues/248'>#248</a>).</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
+<li>Addresses warnings: <code>Non-file package-anchored link(s) in documentation object</code>.</li>
+<li>Updates on <code>ampute</code> documentation (<a href='https://github.com/amices/mice/issues/251'>#251</a>).</li>
+<li>Ask user permission before installing a package from <code>suggests</code>.</li>
+</ul>
+</div>
+</div>
+    <div id="mice-3100" class="section level1">
+<h1 class="page-header" data-toc-text="3.10.0">
+<a href="#mice-3100" class="anchor"></a>mice 3.10.0<small> 2020-07-13 </small>
+</h1>
+<div id="major-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#major-changes-1" class="anchor"></a>Major changes</h2>
+<ul>
+<li>New functions <code><a href="../reference/tidy.mipo.html">tidy.mipo()</a></code> and <code><a href="../reference/glance.mipo.html">glance.mipo()</a></code> return standardized output that conforms to <code>broom</code> specifications. Kindly contributed by Vincent Arel Bundock (<a href='https://github.com/amices/mice/issues/240'>#240</a>).</li>
+</ul>
+</div>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>Solves a problem with the <code>D3</code> testing script that produced an error on CRAN (<a href='https://github.com/amices/mice/issues/244'>#244</a>).</li>
+</ul>
+</div>
+</div>
+    <div id="mice-390" class="section level1">
+<h1 class="page-header" data-toc-text="3.9.0">
+<a href="#mice-390" class="anchor"></a>mice 3.9.0<small> 2020-05-14 </small>
+</h1>
+<div id="major-changes-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#major-changes-2" class="anchor"></a>Major changes</h2>
+<ul>
+<li>The <code><a href="../reference/D3.html">D3()</a></code> function in <code>mice</code> gave incorrect results. This version solves a problem in the calculation of the <code>D3</code>-statistic. See <a href='https://github.com/amices/mice/issues/226'>#226</a> and <a href='https://github.com/amices/mice/issues/228'>#228</a> for more details. The documentation explains why results from <code><a href="../reference/D3.html">mice::D3()</a></code> and <code><a href="https://rdrr.io/pkg/mitml/man/testModels.html">mitml::testModels()</a></code> may differ.</li>
+<li>The <code><a href="../reference/pool.html">pool()</a></code> function is now more forgiving when there is no <code><a href="https://rdrr.io/pkg/generics/man/glance.html">glance()</a></code> function (<a href='https://github.com/amices/mice/issues/233'>#233</a>)</li>
+<li>It is possible to bypass <code>remove.lindep()</code> by setting <code>eps = 0</code> (<a href='https://github.com/amices/mice/issues/225'>#225</a>)</li>
+</ul>
+</div>
+<div id="minor-changes-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<ul>
 <li>Adds reference to Leacy’s thesis</li>
 <li>Adds an example to the <code><a href="../reference/plot.mids.html">plot.mids()</a></code> documentation</li>
 </ul>
 </div>
 </div>
-    <div id="mice-3-8-0" class="section level1">
+    <div id="mice-380" class="section level1">
 <h1 class="page-header" data-toc-text="3.8.0">
-<a href="#mice-3-8-0" class="anchor"></a>mice 3.8.0<small> 2020-02-21 </small>
+<a href="#mice-380" class="anchor"></a>mice 3.8.0<small> 2020-02-21 </small>
 </h1>
-<div id="major-changes-1" class="section level2">
+<div id="major-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h2>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h2>
 <ul>
 <li>This version adds two new NARFCS methods for imputing data under the <em>Missing Not at Random (MNAR)</em> assumption. NARFCS is generalised version of the so-called <span class="math inline"><em>δ</em></span>-adjustment method. Margarita Moreno-Betancur and Ian White kindly contributes the functions <code><a href="../reference/mice.impute.mnar.html">mice.impute.mnar.norm()</a></code> and <code><a href="../reference/mice.impute.mnar.html">mice.impute.mnar.logreg()</a></code>. These functions aid in performing sensitivity analysis to investigate the impact of different MNAR assumptions on the conclusion of the study. An alternative for MNAR is the older <code><a href="../reference/mice.impute.ri.html">mice.impute.ri()</a></code> function.</li>
 <li>Installation of <code>mice</code> is faster. External packages needed for imputation and analyses are now installed on demand. The number of dependencies as estimated by <code>rsconnect::appDepencies()</code> decreased from 132 to 83.</li>
@@ -166,28 +242,28 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Deprecates <code><a href="../reference/pool.compare.html">pool.compare()</a></code>. Use <code><a href="../reference/D1.html">D1()</a></code> instead (<a href='https://github.com/stefvanbuuren/mice/issues/220'>#220</a>)</li>
+<li>Deprecates <code><a href="../reference/pool.compare.html">pool.compare()</a></code>. Use <code><a href="../reference/D1.html">D1()</a></code> instead (<a href='https://github.com/amices/mice/issues/220'>#220</a>)</li>
 <li>Removes everything in <code><a href="https://rdrr.io/r/utils/globalVariables.html">utils::globalVariables()</a></code>
 </li>
-<li>Prevents name clashes with <code>tidyr</code> by defining <code><a href="../reference/complete.mids.html">complete.mids()</a></code> as an S3 method for the <code><a href="https://tidyr.tidyverse.org/reference/complete.html">tidyr::complete()</a></code> generic (<a href='https://github.com/stefvanbuuren/mice/issues/212'>#212</a>)</li>
-<li>Extends the <code><a href="../reference/pool.html">pool()</a></code> function to deal with multiple sets of parameters. Currently supported keywords are: <code>term</code> (all <code>broom</code> functions), <code>component</code> (some <code>broom.mixed</code> functions) and <code>y.values</code> (for <code>multinom()</code> model) (<a href='https://github.com/stefvanbuuren/mice/issues/219'>#219</a>)</li>
+<li>Prevents name clashes with <code>tidyr</code> by defining <code><a href="../reference/complete.mids.html">complete.mids()</a></code> as an S3 method for the <code><a href="https://tidyr.tidyverse.org/reference/complete.html">tidyr::complete()</a></code> generic (<a href='https://github.com/amices/mice/issues/212'>#212</a>)</li>
+<li>Extends the <code><a href="../reference/pool.html">pool()</a></code> function to deal with multiple sets of parameters. Currently supported keywords are: <code>term</code> (all <code>broom</code> functions), <code>component</code> (some <code>broom.mixed</code> functions) and <code>y.values</code> (for <code>multinom()</code> model) (<a href='https://github.com/amices/mice/issues/219'>#219</a>)</li>
 <li>Adds a new <code>install.on.demand()</code> function for lighter installation</li>
 <li>Adds <code>toenail2</code> and remove dependency on <code>HSAUR3</code>
 </li>
-<li>Solves problem with <code>ampute</code> in extreme cases (<a href='https://github.com/stefvanbuuren/mice/issues/216'>#216</a>)</li>
-<li>Solves problem with <code>pool</code> with <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/218'>#218</a>)</li>
+<li>Solves problem with <code>ampute</code> in extreme cases (<a href='https://github.com/amices/mice/issues/216'>#216</a>)</li>
+<li>Solves problem with <code>pool</code> with <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html">mgcv::gam</a></code> (<a href='https://github.com/amices/mice/issues/218'>#218</a>)</li>
 <li>Adds <code>.gitattributes</code> for consistent line endings</li>
 </ul>
 </div>
 </div>
-    <div id="mice-3-7-0" class="section level1">
+    <div id="mice-370" class="section level1">
 <h1 class="page-header" data-toc-text="3.7.0">
-<a href="#mice-3-7-0" class="anchor"></a>mice 3.7.0<small> 2019-12-13 </small>
+<a href="#mice-370" class="anchor"></a>mice 3.7.0<small> 2019-12-13 </small>
 </h1>
 <ul>
-<li>Solves a bug that made <code>polr()</code> always fail (<a href='https://github.com/stefvanbuuren/mice/issues/206'>#206</a>)</li>
-<li>Aborts if one or more columns are a <code>data.frame</code> (<a href='https://github.com/stefvanbuuren/mice/issues/208'>#208</a>)</li>
-<li>Update <code>mira-class</code> documentation (<a href='https://github.com/stefvanbuuren/mice/issues/207'>#207</a>)</li>
+<li>Solves a bug that made <code>polr()</code> always fail (<a href='https://github.com/amices/mice/issues/206'>#206</a>)</li>
+<li>Aborts if one or more columns are a <code>data.frame</code> (<a href='https://github.com/amices/mice/issues/208'>#208</a>)</li>
+<li>Update <code>mira-class</code> documentation (<a href='https://github.com/amices/mice/issues/207'>#207</a>)</li>
 <li>Remove links to deprecated package <code>CALIBERrfimpute</code>
 </li>
 <li>Adds check on partial missing level-2 data to <code>2lonly.norm</code> and <code>2lonly.pmm</code>
@@ -200,102 +276,102 @@
 <li>Imputation method <code>2lonly.mean</code> now also works with factors</li>
 <li>Replace deprecated <code>imputationMethod</code> argument in examples by <code>method</code>
 </li>
-<li>More informative error message when stopped after pre-processing (<a href='https://github.com/stefvanbuuren/mice/issues/194'>#194</a>)</li>
+<li>More informative error message when stopped after pre-processing (<a href='https://github.com/amices/mice/issues/194'>#194</a>)</li>
 <li>Updated URL’s in DESCRIPTION</li>
-<li>Fix string matching in <code>check.predictorMatrix()</code> (<a href='https://github.com/stefvanbuuren/mice/issues/191'>#191</a>)</li>
+<li>Fix string matching in <code>check.predictorMatrix()</code> (<a href='https://github.com/amices/mice/issues/191'>#191</a>)</li>
 </ul>
 </div>
-    <div id="mice-3-6-0" class="section level1">
+    <div id="mice-360" class="section level1">
 <h1 class="page-header" data-toc-text="3.6.0">
-<a href="#mice-3-6-0" class="anchor"></a>mice 3.6.0<small> 2019-07-10 </small>
+<a href="#mice-360" class="anchor"></a>mice 3.6.0<small> 2019-07-10 </small>
 </h1>
 <ul>
 <li>Copy <code>toenail</code> data from orphaned <code>DPpackage</code> package</li>
 <li>Remove <code>DPpackage</code> from <code>Suggests</code> field in <code>DESCRIPTION</code>
 </li>
-<li>Adds support for rotated names in <code><a href="../reference/md.pattern.html">md.pattern()</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/170'>#170</a>, <a href='https://github.com/stefvanbuuren/mice/issues/177'>#177</a>)</li>
+<li>Adds support for rotated names in <code><a href="../reference/md.pattern.html">md.pattern()</a></code> (<a href='https://github.com/amices/mice/issues/170'>#170</a>, <a href='https://github.com/amices/mice/issues/177'>#177</a>)</li>
 </ul>
 </div>
-    <div id="mice-3-5-0" class="section level1">
+    <div id="mice-350" class="section level1">
 <h1 class="page-header" data-toc-text="3.5.0">
-<a href="#mice-3-5-0" class="anchor"></a>mice 3.5.0<small> 2019-05-13 </small>
+<a href="#mice-350" class="anchor"></a>mice 3.5.0<small> 2019-05-13 </small>
 </h1>
 <ul>
 <li>This version has some error fixes</li>
-<li>Fixes a bug in the sampler that ignored imputed values in variables outside the active block (<a href='https://github.com/stefvanbuuren/mice/issues/175'>#175</a>, <a href='https://github.com/alexanderrobitzsch'>@alexanderrobitzsch</a>)</li>
-<li>Adds a note to the documenation of <code>as.mids</code>() (<a href='https://github.com/stefvanbuuren/mice/issues/173'>#173</a>)</li>
-<li>Removes a superfluous warning from process_mipo() (<a href='https://github.com/stefvanbuuren/mice/issues/92'>#92</a>)</li>
-<li>Fixes an error in the degrees of freedom of the P-value calculation (<a href='https://github.com/stefvanbuuren/mice/issues/171'>#171</a>)</li>
+<li>Fixes a bug in the sampler that ignored imputed values in variables outside the active block (<a href='https://github.com/amices/mice/issues/175'>#175</a>, <a href='https://github.com/alexanderrobitzsch'>@alexanderrobitzsch</a>)</li>
+<li>Adds a note to the documenation of <code>as.mids</code>() (<a href='https://github.com/amices/mice/issues/173'>#173</a>)</li>
+<li>Removes a superfluous warning from process_mipo() (<a href='https://github.com/amices/mice/issues/92'>#92</a>)</li>
+<li>Fixes an error in the degrees of freedom of the P-value calculation (<a href='https://github.com/amices/mice/issues/171'>#171</a>)</li>
 </ul>
 </div>
-    <div id="mice-3-4-0" class="section level1">
+    <div id="mice-340" class="section level1">
 <h1 class="page-header" data-toc-text="3.4.0">
-<a href="#mice-3-4-0" class="anchor"></a>mice 3.4.0<small> 2019-03-07 </small>
+<a href="#mice-340" class="anchor"></a>mice 3.4.0<small> 2019-03-07 </small>
 </h1>
 <ul>
 <li>Add a hex sticker to the mice package. Designed by Jaden M. Walters.</li>
 <li>Specify the R3.5.0 random generator in order to pass CRAN tests</li>
 <li>Remove test-fix.coef.R from tests</li>
-<li>Adds a rotate.names argument to md.pattern() (<a href='https://github.com/stefvanbuuren/mice/issues/154'>#154</a>, <a href='https://github.com/stefvanbuuren/mice/issues/160'>#160</a>)</li>
-<li>Fix to solve the name-matching problem (<a href='https://github.com/stefvanbuuren/mice/issues/156'>#156</a>, <a href='https://github.com/stefvanbuuren/mice/issues/149'>#149</a>, <a href='https://github.com/stefvanbuuren/mice/issues/147'>#147</a>)</li>
-<li>Fix that removes the pre-check for existence of <code>mice.impute.xxx()</code> so that <code><a href="../reference/mice.html">mice::mice()</a></code> works as expected (<a href='https://github.com/stefvanbuuren/mice/issues/55'>#55</a>)</li>
-<li>Solves a bug that crashed <code><a href="../reference/mids2spss.html">mids2spss()</a></code>, thanks Edgar Schoreit (<a href='https://github.com/stefvanbuuren/mice/issues/149'>#149</a>)</li>
-<li>Solves a problem in the routing logic (<a href='https://github.com/stefvanbuuren/mice/issues/149'>#149</a>) causing that passive imputation was not done when no predictors were specified. No passive imputation correctly will ignore any the specification of <code>predictorMatrix</code>.</li>
-<li>Implements an alternative solution for <a href='https://github.com/stefvanbuuren/mice/issues/93'>#93</a> and <a href='https://github.com/stefvanbuuren/mice/issues/96'>#96</a>. Instead of skipping imputation of variables without predictors, <code>mice 3.3.1</code> will impute those variables using the intercept only</li>
-<li>Adds a routine contributed by Simon Grund that checks for deprecated arguments <a href='https://github.com/stefvanbuuren/mice/issues/137'>#137</a></li>
-<li>Improves the <code><a href="../reference/nelsonaalen.html">nelsonaalen()</a></code> function for data where variables <code>time</code> or <code>status</code> have already been defined (<a href='https://github.com/stefvanbuuren/mice/issues/140'>#140</a>), thanks matthieu-faron</li>
+<li>Adds a rotate.names argument to md.pattern() (<a href='https://github.com/amices/mice/issues/154'>#154</a>, <a href='https://github.com/amices/mice/issues/160'>#160</a>)</li>
+<li>Fix to solve the name-matching problem (<a href='https://github.com/amices/mice/issues/156'>#156</a>, <a href='https://github.com/amices/mice/issues/149'>#149</a>, <a href='https://github.com/amices/mice/issues/147'>#147</a>)</li>
+<li>Fix that removes the pre-check for existence of <code>mice.impute.xxx()</code> so that <code><a href="../reference/mice.html">mice::mice()</a></code> works as expected (<a href='https://github.com/amices/mice/issues/55'>#55</a>)</li>
+<li>Solves a bug that crashed <code><a href="../reference/mids2spss.html">mids2spss()</a></code>, thanks Edgar Schoreit (<a href='https://github.com/amices/mice/issues/149'>#149</a>)</li>
+<li>Solves a problem in the routing logic (<a href='https://github.com/amices/mice/issues/149'>#149</a>) causing that passive imputation was not done when no predictors were specified. No passive imputation correctly will ignore any the specification of <code>predictorMatrix</code>.</li>
+<li>Implements an alternative solution for <a href='https://github.com/amices/mice/issues/93'>#93</a> and <a href='https://github.com/amices/mice/issues/96'>#96</a>. Instead of skipping imputation of variables without predictors, <code>mice 3.3.1</code> will impute those variables using the intercept only</li>
+<li>Adds a routine contributed by Simon Grund that checks for deprecated arguments <a href='https://github.com/amices/mice/issues/137'>#137</a></li>
+<li>Improves the <code><a href="../reference/nelsonaalen.html">nelsonaalen()</a></code> function for data where variables <code>time</code> or <code>status</code> have already been defined (<a href='https://github.com/amices/mice/issues/140'>#140</a>), thanks matthieu-faron</li>
 </ul>
 </div>
-    <div id="mice-3-3-0" class="section level1">
+    <div id="mice-330" class="section level1">
 <h1 class="page-header" data-toc-text="3.3.0">
-<a href="#mice-3-3-0" class="anchor"></a>mice 3.3.0<small> 2018-07-27 </small>
+<a href="#mice-330" class="anchor"></a>mice 3.3.0<small> 2018-07-27 </small>
 </h1>
 <ul>
-<li>Solves bug in passive imputation (<a href='https://github.com/stefvanbuuren/mice/issues/130'>#130</a>). <em>Warning: This bug may have caused invalid imputations in <code>mice 3.0.0</code> - <code>mice 3.2.0</code> under passive imputation.</em>
+<li>Solves bug in passive imputation (<a href='https://github.com/amices/mice/issues/130'>#130</a>). <em>Warning: This bug may have caused invalid imputations in <code>mice 3.0.0</code> - <code>mice 3.2.0</code> under passive imputation.</em>
 </li>
-<li>Updates code to <code>broom 0.5.0</code> (<a href='https://github.com/stefvanbuuren/mice/issues/128'>#128</a>)</li>
-<li>Solves problem with <code><a href="../reference/mice.impute.2l.norm.html">mice.impute.2l.norm()</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/129'>#129</a>)</li>
+<li>Updates code to <code>broom 0.5.0</code> (<a href='https://github.com/amices/mice/issues/128'>#128</a>)</li>
+<li>Solves problem with <code><a href="../reference/mice.impute.2l.norm.html">mice.impute.2l.norm()</a></code> (<a href='https://github.com/amices/mice/issues/129'>#129</a>)</li>
 <li>Use explicit foreign function calls in tests</li>
 </ul>
 </div>
-    <div id="mice-3-2-0" class="section level1">
+    <div id="mice-320" class="section level1">
 <h1 class="page-header" data-toc-text="3.2.0">
-<a href="#mice-3-2-0" class="anchor"></a>mice 3.2.0<small> 2018-07-24 </small>
+<a href="#mice-320" class="anchor"></a>mice 3.2.0<small> 2018-07-24 </small>
 </h1>
 <ul>
-<li>Skip tests for <code><a href="../reference/mice.impute.2l.norm.html">mice.impute.2l.norm()</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/129'>#129</a>)</li>
-<li>Skip tests for <code><a href="../reference/D1.html">D1()</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/128'>#128</a>)</li>
-<li>Solve problem with <code>md.pattern</code> (<a href='https://github.com/stefvanbuuren/mice/issues/126'>#126</a>)</li>
-<li>Evades warning in <code>rbind</code> and <code>cbind</code> (<a href='https://github.com/stefvanbuuren/mice/issues/114'>#114</a>)</li>
-<li>Solves <code>rbind</code> problem when <code>method</code> is a list (<a href='https://github.com/stefvanbuuren/mice/issues/113'>#113</a>)</li>
-<li>More efficient use of <code>parlmice</code> (<a href='https://github.com/stefvanbuuren/mice/issues/109'>#109</a>)</li>
-<li>Add <code>dfcom</code> argument to <code><a href="../reference/pool.html">pool()</a></code> (<a href='https://github.com/stefvanbuuren/mice/issues/105'>#105</a>, <a href='https://github.com/stefvanbuuren/mice/issues/110'>#110</a>)</li>
-<li>Updates to <code>parlmice</code> + bugfix (<a href='https://github.com/stefvanbuuren/mice/issues/107'>#107</a>)</li>
+<li>Skip tests for <code><a href="../reference/mice.impute.2l.norm.html">mice.impute.2l.norm()</a></code> (<a href='https://github.com/amices/mice/issues/129'>#129</a>)</li>
+<li>Skip tests for <code><a href="../reference/D1.html">D1()</a></code> (<a href='https://github.com/amices/mice/issues/128'>#128</a>)</li>
+<li>Solve problem with <code>md.pattern</code> (<a href='https://github.com/amices/mice/issues/126'>#126</a>)</li>
+<li>Evades warning in <code>rbind</code> and <code>cbind</code> (<a href='https://github.com/amices/mice/issues/114'>#114</a>)</li>
+<li>Solves <code>rbind</code> problem when <code>method</code> is a list (<a href='https://github.com/amices/mice/issues/113'>#113</a>)</li>
+<li>More efficient use of <code>parlmice</code> (<a href='https://github.com/amices/mice/issues/109'>#109</a>)</li>
+<li>Add <code>dfcom</code> argument to <code><a href="../reference/pool.html">pool()</a></code> (<a href='https://github.com/amices/mice/issues/105'>#105</a>, <a href='https://github.com/amices/mice/issues/110'>#110</a>)</li>
+<li>Updates to <code>parlmice</code> + bugfix (<a href='https://github.com/amices/mice/issues/107'>#107</a>)</li>
 </ul>
 </div>
-    <div id="mice-3-1-0" class="section level1">
+    <div id="mice-310" class="section level1">
 <h1 class="page-header" data-toc-text="3.1.0">
-<a href="#mice-3-1-0" class="anchor"></a>mice 3.1.0<small> 2018-06-20 </small>
+<a href="#mice-310" class="anchor"></a>mice 3.1.0<small> 2018-06-20 </small>
 </h1>
 <ul>
-<li>New parallel functionality: <code>parlmice</code> (<a href='https://github.com/stefvanbuuren/mice/issues/104'>#104</a>)</li>
-<li>Incorporate suggestion of <a href='https://github.com/JoergMBeyer'>@JoergMBeyer</a> to <code>flux</code> (<a href='https://github.com/stefvanbuuren/mice/issues/102'>#102</a>)</li>
-<li>Replace duplicate code by <code>estimice</code> (<a href='https://github.com/stefvanbuuren/mice/issues/101'>#101</a>)</li>
-<li>Better checking for empty methods (<a href='https://github.com/stefvanbuuren/mice/issues/99'>#99</a>)</li>
-<li>Remove problem with <code>parent.frame</code> (<a href='https://github.com/stefvanbuuren/mice/issues/98'>#98</a>)</li>
-<li>Set empty method for complete data (<a href='https://github.com/stefvanbuuren/mice/issues/93'>#93</a>)</li>
+<li>New parallel functionality: <code>parlmice</code> (<a href='https://github.com/amices/mice/issues/104'>#104</a>)</li>
+<li>Incorporate suggestion of <a href='https://github.com/JoergMBeyer'>@JoergMBeyer</a> to <code>flux</code> (<a href='https://github.com/amices/mice/issues/102'>#102</a>)</li>
+<li>Replace duplicate code by <code>estimice</code> (<a href='https://github.com/amices/mice/issues/101'>#101</a>)</li>
+<li>Better checking for empty methods (<a href='https://github.com/amices/mice/issues/99'>#99</a>)</li>
+<li>Remove problem with <code>parent.frame</code> (<a href='https://github.com/amices/mice/issues/98'>#98</a>)</li>
+<li>Set empty method for complete data (<a href='https://github.com/amices/mice/issues/93'>#93</a>)</li>
 <li>Add <code>NEWS.md</code>, <code>index.Rmd</code> and online package documentation</li>
 <li>Track <code>.R</code> instead of <code>.r</code>
 </li>
-<li>Patch issue with <code>updateLog</code> (<a href='https://github.com/stefvanbuuren/mice/issues/8'>#8</a>, <a href='https://github.com/alexanderrobitzsch'>@alexanderrobitzsch</a>)</li>
+<li>Patch issue with <code>updateLog</code> (<a href='https://github.com/amices/mice/issues/8'>#8</a>, <a href='https://github.com/alexanderrobitzsch'>@alexanderrobitzsch</a>)</li>
 <li>Extend README</li>
-<li>Repair issue <code>md.pattern</code> (<a href='https://github.com/stefvanbuuren/mice/issues/90'>#90</a>)</li>
-<li>Repair check on <code>m</code> (<a href='https://github.com/stefvanbuuren/mice/issues/89'>#89</a>)</li>
+<li>Repair issue <code>md.pattern</code> (<a href='https://github.com/amices/mice/issues/90'>#90</a>)</li>
+<li>Repair check on <code>m</code> (<a href='https://github.com/amices/mice/issues/89'>#89</a>)</li>
 </ul>
 </div>
-    <div id="mice-3-0-0" class="section level1">
+    <div id="mice-300" class="section level1">
 <h1 class="page-header" data-toc-text="3.0.0">
-<a href="#mice-3-0-0" class="anchor"></a>mice 3.0.0<small> 2018-05-25 </small>
+<a href="#mice-300" class="anchor"></a>mice 3.0.0<small> 2018-05-25 </small>
 </h1>
 <p>Version 3.0 represents a major update that implements the following features:</p>
 <ol>
@@ -308,15 +384,15 @@
 <li><p>Last but not least: A brand new edition AND online version of <a href="https://stefvanbuuren.name/fimd/">Flexible Imputation of Missing Data. Second Edition.</a></p></li>
 </ol>
 </div>
-    <div id="mice-2-46-9-2017-12-08" class="section level1">
+    <div id="mice-2469-2017-12-08" class="section level1">
 <h1 class="page-header" data-toc-text="2.46.9">
-<a href="#mice-2-46-9-2017-12-08" class="anchor"></a>mice 2.46.9 (2017-12-08)<small> Unreleased </small>
+<a href="#mice-2469-2017-12-08" class="anchor"></a>mice 2.46.9 (2017-12-08)<small> Unreleased </small>
 </h1>
 <ul>
-<li>simplify code for <code>mids</code> object in <code>mice</code> (thanks stephematician) (<a href='https://github.com/stefvanbuuren/mice/issues/61'>#61</a>)</li>
-<li>simplify code in <code>rbind.mids</code> (thanks stephematician) (<a href='https://github.com/stefvanbuuren/mice/issues/59'>#59</a>)</li>
-<li>repair bug in <code><a href="../reference/pool.compare.html">pool.compare()</a></code> in handling factors (<a href='https://github.com/stefvanbuuren/mice/issues/60'>#60</a>)</li>
-<li>fixed bug in <code>rbind.mids</code> in handling <code>where</code> (<a href='https://github.com/stefvanbuuren/mice/issues/59'>#59</a>)</li>
+<li>simplify code for <code>mids</code> object in <code>mice</code> (thanks stephematician) (<a href='https://github.com/amices/mice/issues/61'>#61</a>)</li>
+<li>simplify code in <code>rbind.mids</code> (thanks stephematician) (<a href='https://github.com/amices/mice/issues/59'>#59</a>)</li>
+<li>repair bug in <code><a href="../reference/pool.compare.html">pool.compare()</a></code> in handling factors (<a href='https://github.com/amices/mice/issues/60'>#60</a>)</li>
+<li>fixed bug in <code>rbind.mids</code> in handling <code>where</code> (<a href='https://github.com/amices/mice/issues/59'>#59</a>)</li>
 <li>add new arguments to <code><a href="../reference/as.mids.html">as.mids()</a></code>, add <code>as()</code>
 </li>
 <li>update contact info</li>
@@ -325,50 +401,50 @@
 <li>Switch to 3-digit versioning</li>
 </ul>
 </div>
-    <div id="mice-2-46-2017-10-22" class="section level1">
+    <div id="mice-246-2017-10-22" class="section level1">
 <h1 class="page-header" data-toc-text="2.46">
-<a href="#mice-2-46-2017-10-22" class="anchor"></a>mice 2.46 (2017-10-22)<small> Unreleased </small>
+<a href="#mice-246-2017-10-22" class="anchor"></a>mice 2.46 (2017-10-22)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Allow for capitals in imputation methods</li>
 </ul>
 </div>
-    <div id="mice-2-45-2017-10-21" class="section level1">
+    <div id="mice-245-2017-10-21" class="section level1">
 <h1 class="page-header" data-toc-text="2.45">
-<a href="#mice-2-45-2017-10-21" class="anchor"></a>mice 2.45 (2017-10-21)<small> Unreleased </small>
+<a href="#mice-245-2017-10-21" class="anchor"></a>mice 2.45 (2017-10-21)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Reorganized vignettes to land on GitHUB pages</li>
 </ul>
 </div>
-    <div id="mice-2-44-2017-10-18" class="section level1">
+    <div id="mice-244-2017-10-18" class="section level1">
 <h1 class="page-header" data-toc-text="2.44">
-<a href="#mice-2-44-2017-10-18" class="anchor"></a>mice 2.44 (2017-10-18)<small> Unreleased </small>
+<a href="#mice-244-2017-10-18" class="anchor"></a>mice 2.44 (2017-10-18)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Code changes for robustness, style and efficiency (Bernie Gray)</li>
 </ul>
 </div>
-    <div id="mice-2-43-2017-07-20" class="section level1">
+    <div id="mice-243-2017-07-20" class="section level1">
 <h1 class="page-header" data-toc-text="2.43">
-<a href="#mice-2-43-2017-07-20" class="anchor"></a>mice 2.43 (2017-07-20)<small> Unreleased </small>
+<a href="#mice-243-2017-07-20" class="anchor"></a>mice 2.43 (2017-07-20)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Updates the <code>ampute</code> function and vignettes (Rianne Schouten)</li>
 </ul>
 </div>
-    <div id="mice-2-42-2017-07-11" class="section level1">
+    <div id="mice-242-2017-07-11" class="section level1">
 <h1 class="page-header" data-toc-text="2.42">
-<a href="#mice-2-42-2017-07-11" class="anchor"></a>mice 2.42 (2017-07-11)<small> Unreleased </small>
+<a href="#mice-242-2017-07-11" class="anchor"></a>mice 2.42 (2017-07-11)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Rename <code>mice.impute.2l.sys</code> to <code>mice.impute.2l.lmer</code>
 </li>
 </ul>
 </div>
-    <div id="mice-2-41-2017-07-10" class="section level1">
+    <div id="mice-241-2017-07-10" class="section level1">
 <h1 class="page-header" data-toc-text="2.41">
-<a href="#mice-2-41-2017-07-10" class="anchor"></a>mice 2.41 (2017-07-10)<small> Unreleased </small>
+<a href="#mice-241-2017-07-10" class="anchor"></a>mice 2.41 (2017-07-10)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add new feature: <code>where</code>argument to mice</li>
@@ -379,9 +455,9 @@
 <li>Fixed Bug that made the pad element disappear from <code>mids</code> object</li>
 </ul>
 </div>
-    <div id="mice-2-40-2017-07-07" class="section level1">
+    <div id="mice-240-2017-07-07" class="section level1">
 <h1 class="page-header" data-toc-text="2.40">
-<a href="#mice-2-40-2017-07-07" class="anchor"></a>mice 2.40 (2017-07-07)<small> Unreleased </small>
+<a href="#mice-240-2017-07-07" class="anchor"></a>mice 2.40 (2017-07-07)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Fixed integration with <code>lattice</code> package</li>
@@ -394,9 +470,9 @@
 <li>Fix timestamp problem by rebuilding vignette using R 3.4.0.</li>
 </ul>
 </div>
-    <div id="mice-2-34-2017-04-24" class="section level1">
+    <div id="mice-234-2017-04-24" class="section level1">
 <h1 class="page-header" data-toc-text="2.34">
-<a href="#mice-2-34-2017-04-24" class="anchor"></a>mice 2.34 (2017-04-24)<small> Unreleased </small>
+<a href="#mice-234-2017-04-24" class="anchor"></a>mice 2.34 (2017-04-24)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Update to roxygen 6.0.1</li>
@@ -405,9 +481,9 @@
 </li>
 </ul>
 </div>
-    <div id="mice-2-31-2017-02-23" class="section level1">
+    <div id="mice-231-2017-02-23" class="section level1">
 <h1 class="page-header" data-toc-text="2.31">
-<a href="#mice-2-31-2017-02-23" class="anchor"></a>mice 2.31 (2017-02-23)<small> Unreleased </small>
+<a href="#mice-231-2017-02-23" class="anchor"></a>mice 2.31 (2017-02-23)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add link to <code>miceVignettes</code> on github (thanks Gerko Vink)</li>
@@ -417,32 +493,32 @@
 <li>Rename <code>ccn</code> –&gt; <code>ncc</code>, <code>icn</code> –&gt; <code>nic</code>
 </li>
 <li>Change helpers <code><a href="../reference/cc.html">cc()</a></code>, <code><a href="../reference/ncc.html">ncc()</a></code>, <code><a href="../reference/cci.html">cci()</a></code>, <code><a href="../reference/ic.html">ic()</a></code>, <code><a href="../reference/nic.html">nic()</a></code> and <code><a href="../reference/ici.html">ici()</a></code> use <code>S3</code> dispatch</li>
-<li>Change issues tracker on Github - add BugReports URL <a href='https://github.com/stefvanbuuren/mice/issues/21'>#21</a></li>
-<li>Fixed <code>multinom</code> MaxNWts type fix in <code>polyreg</code> and <code>polr</code> <a href='https://github.com/stefvanbuuren/mice/issues/9'>#9</a></li>
-<li>Fix checking of nested models in <code>pool.compare</code> <a href='https://github.com/stefvanbuuren/mice/issues/12'>#12</a></li>
-<li>Fix <code>as.mids</code> if names not same as all columns <a href='https://github.com/stefvanbuuren/mice/issues/11'>#11</a></li>
-<li>Fix extension for <code>glmer</code> models <a href='https://github.com/stefvanbuuren/mice/issues/5'>#5</a></li>
+<li>Change issues tracker on Github - add BugReports URL <a href='https://github.com/amices/mice/issues/21'>#21</a></li>
+<li>Fixed <code>multinom</code> MaxNWts type fix in <code>polyreg</code> and <code>polr</code> <a href='https://github.com/amices/mice/issues/9'>#9</a></li>
+<li>Fix checking of nested models in <code>pool.compare</code> <a href='https://github.com/amices/mice/issues/12'>#12</a></li>
+<li>Fix <code>as.mids</code> if names not same as all columns <a href='https://github.com/amices/mice/issues/11'>#11</a></li>
+<li>Fix extension for <code>glmer</code> models <a href='https://github.com/amices/mice/issues/5'>#5</a></li>
 </ul>
 </div>
-    <div id="mice-2-29-2016-10-05" class="section level1">
+    <div id="mice-229-2016-10-05" class="section level1">
 <h1 class="page-header" data-toc-text="2.29">
-<a href="#mice-2-29-2016-10-05" class="anchor"></a>mice 2.29 (2016-10-05)<small> Unreleased </small>
+<a href="#mice-229-2016-10-05" class="anchor"></a>mice 2.29 (2016-10-05)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add <code>midastouch</code>: predictive mean matching for small samples (thanks Philip Gaffert, Florian Meinfelder)</li>
 </ul>
 </div>
-    <div id="mice-2-28-2016-10-05" class="section level1">
+    <div id="mice-228-2016-10-05" class="section level1">
 <h1 class="page-header" data-toc-text="2.28">
-<a href="#mice-2-28-2016-10-05" class="anchor"></a>mice 2.28 (2016-10-05)<small> Unreleased </small>
+<a href="#mice-228-2016-10-05" class="anchor"></a>mice 2.28 (2016-10-05)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Repaired dots problem in <code>rpart</code> call</li>
 </ul>
 </div>
-    <div id="mice-2-27-2016-07-27" class="section level1">
+    <div id="mice-227-2016-07-27" class="section level1">
 <h1 class="page-header" data-toc-text="2.27">
-<a href="#mice-2-27-2016-07-27" class="anchor"></a>mice 2.27 (2016-07-27)<small> Unreleased </small>
+<a href="#mice-227-2016-07-27" class="anchor"></a>mice 2.27 (2016-07-27)<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add <code>ridge</code> to <code>2l.norm()</code>
@@ -450,31 +526,31 @@
 <li>Remove <code>.o</code> files</li>
 </ul>
 </div>
-    <div id="mice-2-25-2015-11-09" class="section level1">
+    <div id="mice-225-2015-11-09" class="section level1">
 <h1 class="page-header" data-toc-text="2.25">
-<a href="#mice-2-25-2015-11-09" class="anchor"></a>mice 2.25 (2015-11-09)<small> 2015-11-09 </small>
+<a href="#mice-225-2015-11-09" class="anchor"></a>mice 2.25 (2015-11-09)<small> 2015-11-09 </small>
 </h1>
 <ul>
 <li>Fix <code><a href="../reference/as.mids.html">as.mids()</a></code> bug that crashed <code><a href="https://rdrr.io/pkg/miceadds/man/mice.1chain.html">miceadds::mice.1chain()</a></code>
 </li>
 </ul>
 </div>
-    <div id="mice-2-23-2015-11-04" class="section level1">
+    <div id="mice-223-2015-11-04" class="section level1">
 <h1 class="page-header" data-toc-text="2.23">
-<a href="#mice-2-23-2015-11-04" class="anchor"></a>mice 2.23 (2015-11-04)<small> Unreleased </small>
+<a href="#mice-223-2015-11-04" class="anchor"></a>mice 2.23 (2015-11-04)<small> Unreleased </small>
 </h1>
 <ul>
-<li>Update of example code on /doc</li>
+<li><p>Update of example code on /doc</p></li>
 <li><p>Remove lots of dependencies, general cleanup</p></li>
-<li>Fix <code>impute.polyreg()</code> bug that bombed if there were no predictors (thanks Jan Graffelman)</li>
-<li>Fix <code><a href="../reference/as.mids.html">as.mids()</a></code> bug that gave incorrect <span class="math inline"><em>m</em></span> (several users)</li>
-<li>Fix <code><a href="../reference/pool.compare.html">pool.compare()</a></code> error for <code>lmer</code> object (thanks Claudio Bustos)</li>
+<li><p>Fix <code>impute.polyreg()</code> bug that bombed if there were no predictors (thanks Jan Graffelman)</p></li>
+<li><p>Fix <code><a href="../reference/as.mids.html">as.mids()</a></code> bug that gave incorrect <span class="math inline"><em>m</em></span> (several users)</p></li>
+<li><p>Fix <code><a href="../reference/pool.compare.html">pool.compare()</a></code> error for <code>lmer</code> object (thanks Claudio Bustos)</p></li>
 <li><p>Fix error in <code><a href="../reference/mice.impute.2l.norm.html">mice.impute.2l.norm()</a></code> if just one <code>NA</code> (thanks Jeroen Hoogland)</p></li>
 </ul>
 </div>
-    <div id="mice-2-22-2014-06-11" class="section level1">
+    <div id="mice-222-2014-06-11" class="section level1">
 <h1 class="page-header" data-toc-text="2.22">
-<a href="#mice-2-22-2014-06-11" class="anchor"></a>mice 2.22 (2014-06-11)<small> 2014-06-11 </small>
+<a href="#mice-222-2014-06-11" class="anchor"></a>mice 2.22 (2014-06-11)<small> 2014-06-11 </small>
 </h1>
 <ul>
 <li>Add about six times faster predictive mean matching</li>
@@ -482,7 +558,7 @@
 <code><a href="../reference/pool.scalar.html">pool.scalar()</a></code> now can do Barnard-Rubin adjustment</li>
 <li>
 <code><a href="../reference/pool.html">pool()</a></code> now handles class <code>lmerMod</code> from the <code>lme4</code> package</li>
-<li>Added automatic bounds on donors in <code><a href="../reference/pmm.match.html">.pmm.match()</a></code> for safety</li>
+<li>Added automatic bounds on donors in <code>.pmm.match()</code> for safety</li>
 <li>Added donors argument to <code><a href="../reference/mice.impute.pmm.html">mice.impute.pmm()</a></code> for increased visibility</li>
 <li>Changes default number of trees in <code><a href="../reference/mice.impute.rf.html">mice.impute.rf()</a></code> from 100 to 10 (thanks Anoop Shah)</li>
 <li>
@@ -498,26 +574,26 @@
 </li>
 </ul>
 </div>
-    <div id="mice-2-21-02-05-2014-svb" class="section level1">
+    <div id="mice-221-02-05-2014-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.21">
-<a href="#mice-2-21-02-05-2014-svb" class="anchor"></a>mice 2.21 02-05-2014 SvB<small> 2014-02-05 </small>
+<a href="#mice-221-02-05-2014-svb" class="anchor"></a>mice 2.21 02-05-2014 SvB<small> 2014-02-05 </small>
 </h1>
 <ul>
 <li>FIXED: compilation problem in match.cpp on solaris CC</li>
 </ul>
 </div>
-    <div id="mice-2-20-02-02-2014-svb" class="section level1">
+    <div id="mice-220-02-02-2014-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.20">
-<a href="#mice-2-20-02-02-2014-svb" class="anchor"></a>mice 2.20 02-02-2014 SvB<small> 2014-02-04 </small>
+<a href="#mice-220-02-02-2014-svb" class="anchor"></a>mice 2.20 02-02-2014 SvB<small> 2014-02-04 </small>
 </h1>
 <ul>
 <li>ADDED: experimental fastpmm() function using Rcpp</li>
 <li>FIXED: fixes to mice.impute.cart() and mice.impute.rf() (thanks Anoop Shah)</li>
 </ul>
 </div>
-    <div id="mice-2-19-21-01-2014-svb" class="section level1">
+    <div id="mice-219-21-01-2014-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.19">
-<a href="#mice-2-19-21-01-2014-svb" class="anchor"></a>mice 2.19 21-01-2014 SvB<small> Unreleased </small>
+<a href="#mice-219-21-01-2014-svb" class="anchor"></a>mice 2.19 21-01-2014 SvB<small> Unreleased </small>
 </h1>
 <ul>
 <li>ADDED: mice.impute.rf() for random forest imputation (thanks Lisa Doove)</li>
@@ -528,9 +604,9 @@
 <li>FIXED: proper handling of rare case in remove.lindep() that removed all predictors (thanks Jaap Brand)</li>
 </ul>
 </div>
-    <div id="mice-2-18-31-07-2013-svb" class="section level1">
+    <div id="mice-218-31-07-2013-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.18">
-<a href="#mice-2-18-31-07-2013-svb" class="anchor"></a>mice 2.18 31-07-2013 SvB<small> 2013-08-01 </small>
+<a href="#mice-218-31-07-2013-svb" class="anchor"></a>mice 2.18 31-07-2013 SvB<small> 2013-08-01 </small>
 </h1>
 <ul>
 <li>ADDED: as.mids() for converting long format in a mids object (thanks Gerko Vink)</li>
@@ -538,9 +614,9 @@
 <li>FIXED: two bugs in rbind.mids() (thanks Gerko Vink)</li>
 </ul>
 </div>
-    <div id="mice-2-17-10-05-2013-svb" class="section level1">
+    <div id="mice-217-10-05-2013-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.17">
-<a href="#mice-2-17-10-05-2013-svb" class="anchor"></a>mice 2.17 10-05-2013 SvB<small> 2013-05-12 </small>
+<a href="#mice-217-10-05-2013-svb" class="anchor"></a>mice 2.17 10-05-2013 SvB<small> 2013-05-12 </small>
 </h1>
 <ul>
 <li>ADDED: new form argument to mice() to specify imputation models using forms (contributed Ross Boylan)</li>
@@ -549,9 +625,9 @@
 <li>FIXED: error in mice.impute.ri() (thanks Shahab Jolani)</li>
 </ul>
 </div>
-    <div id="mice-2-16-27-04-2013-svb" class="section level1">
+    <div id="mice-216-27-04-2013-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.16">
-<a href="#mice-2-16-27-04-2013-svb" class="anchor"></a>mice 2.16 27-04-2013 SvB<small> 2013-04-27 </small>
+<a href="#mice-216-27-04-2013-svb" class="anchor"></a>mice 2.16 27-04-2013 SvB<small> 2013-04-27 </small>
 </h1>
 <ul>
 <li>ADDED: random indicator imputation by mice.impute.ri() for nonignorable models (thanks Shahab Jolani)</li>
@@ -562,9 +638,9 @@
 <li>FIXED: warning eliminated caused by character variables (thanks Robert Long)</li>
 </ul>
 </div>
-    <div id="mice-2-15---02-04-2013-svb" class="section level1">
+    <div id="mice-215---02-04-2013-svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.15">
-<a href="#mice-2-15---02-04-2013-svb" class="anchor"></a>mice 2.15 - 02-04-2013 SvB<small> 2013-04-03 </small>
+<a href="#mice-215---02-04-2013-svb" class="anchor"></a>mice 2.15 - 02-04-2013 SvB<small> 2013-04-03 </small>
 </h1>
 <ul>
 <li>CHANGED: complete reorganization of documentation and source files</li>
@@ -574,9 +650,9 @@
 <li>FIXED: error in DESCRIPTION file (thanks Kurt Hornik)</li>
 </ul>
 </div>
-    <div id="mice-2-14---11-03-2013-svb" class="section level1">
+    <div id="mice-214---11-03-2013--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.14">
-<a href="#mice-2-14---11-03-2013-svb" class="anchor"></a>mice 2.14 - 11-03-2013 / SvB<small> 2013-03-19 </small>
+<a href="#mice-214---11-03-2013--svb" class="anchor"></a>mice 2.14 - 11-03-2013 / SvB<small> 2013-03-19 </small>
 </h1>
 <ul>
 <li>ADDED: mice.impute.2l.mean() for imputing class means at level 2</li>
@@ -591,9 +667,9 @@
 <li>CHANGED: faster .pmm.match2() from version 2.12 renamed to default .pmm.match()</li>
 </ul>
 </div>
-    <div id="mice-2-13---03-07-2012-svb" class="section level1">
+    <div id="mice-213---03-07-2012--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.13">
-<a href="#mice-2-13---03-07-2012-svb" class="anchor"></a>mice 2.13 - 03-07-2012 / SvB<small> 2012-07-04 </small>
+<a href="#mice-213---03-07-2012--svb" class="anchor"></a>mice 2.13 - 03-07-2012 / SvB<small> 2012-07-04 </small>
 </h1>
 <ul>
 <li>ADDED: new multilevel functions 2l.pan(), 2lonly.norm(), 2lonly.pmm() (contributed by Alexander Robitzsch)</li>
@@ -609,9 +685,9 @@
 <li>REMOVED: wp.twin(). Now available from the AGD package</li>
 </ul>
 </div>
-    <div id="mice-2-12---25-03-2012-svb" class="section level1">
+    <div id="mice-212---25-03-2012--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.12">
-<a href="#mice-2-12---25-03-2012-svb" class="anchor"></a>mice 2.12 - 25-03-2012 / SvB<small> 2012-03-25 </small>
+<a href="#mice-212---25-03-2012--svb" class="anchor"></a>mice 2.12 - 25-03-2012 / SvB<small> 2012-03-25 </small>
 </h1>
 <ul>
 <li>UPDATE: version for launch of Flexible Imputation of Missing Data (FIMD)</li>
@@ -630,9 +706,9 @@
 <li>FIXED: bug in md.pattern() for &gt;32 variables (thanks Sascha Vieweg, Joshua Wiley)</li>
 </ul>
 </div>
-    <div id="mice-2-11---21-11-2011-svb" class="section level1">
+    <div id="mice-211---21-11-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.11">
-<a href="#mice-2-11---21-11-2011-svb" class="anchor"></a>mice 2.11 - 21-11-2011 / SvB<small> 2011-11-22 </small>
+<a href="#mice-211---21-11-2011--svb" class="anchor"></a>mice 2.11 - 21-11-2011 / SvB<small> 2011-11-22 </small>
 </h1>
 <ul>
 <li>UPDATE: definite reference to JSS paper</li>
@@ -643,18 +719,18 @@
 <li>FIXED: bug in check.method() (thanks Gerko Vink)</li>
 </ul>
 </div>
-    <div id="mice-2-10---14-09-2011-svb" class="section level1">
+    <div id="mice-210---14-09-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.10">
-<a href="#mice-2-10---14-09-2011-svb" class="anchor"></a>mice 2.10 - 14-09-2011 / SvB<small> 2011-09-15 </small>
+<a href="#mice-210---14-09-2011--svb" class="anchor"></a>mice 2.10 - 14-09-2011 / SvB<small> 2011-09-15 </small>
 </h1>
 <ul>
 <li>FIXED: arguments dec and sep in mids2spss (thanks Nicole Haag)</li>
 <li>FIXED: bug in keyword “monotone” in mice() (thanks Alain D)</li>
 </ul>
 </div>
-    <div id="mice-2-9---31-08-2011-svb" class="section level1">
+    <div id="mice-29---31-08-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.9">
-<a href="#mice-2-9---31-08-2011-svb" class="anchor"></a>mice 2.9 - 31-08-2011 / SvB<small> 2011-09-01 </small>
+<a href="#mice-29---31-08-2011--svb" class="anchor"></a>mice 2.9 - 31-08-2011 / SvB<small> 2011-09-01 </small>
 </h1>
 <ul>
 <li>FIXED: appropriate trimming of ynames and xnames in Trellis plots</li>
@@ -667,17 +743,17 @@
 <li>FIXED: documentation of mira class (thanks Sandro Tsang)</li>
 </ul>
 </div>
-    <div id="mice-2-8---24-03-2011-svb" class="section level1">
+    <div id="mice-28---24-03-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.8">
-<a href="#mice-2-8---24-03-2011-svb" class="anchor"></a>mice 2.8 - 24-03-2011 / SvB<small> 2011-03-26 </small>
+<a href="#mice-28---24-03-2011--svb" class="anchor"></a>mice 2.8 - 24-03-2011 / SvB<small> 2011-03-26 </small>
 </h1>
 <ul>
 <li>FIXED: bug fixed in find.collinear() that bombed when only one variable was left</li>
 </ul>
 </div>
-    <div id="mice-2-7---16-03-2011-svb" class="section level1">
+    <div id="mice-27---16-03-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.7">
-<a href="#mice-2-7---16-03-2011-svb" class="anchor"></a>mice 2.7 - 16-03-2011 / SvB<small> 2011-03-16 </small>
+<a href="#mice-27---16-03-2011--svb" class="anchor"></a>mice 2.7 - 16-03-2011 / SvB<small> 2011-03-16 </small>
 </h1>
 <ul>
 <li>CHANGED: check.data(), remove.lindep(): fully missing variables are imputed if allow.na=TRUE (Alexander Robitzsch)</li>
@@ -685,9 +761,9 @@
 <li>CHANGED: abbreviations of arguments eliminated to evade linux warnings</li>
 </ul>
 </div>
-    <div id="mice-2-6---03-03-2011-svb" class="section level1">
+    <div id="mice-26---03-03-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.6">
-<a href="#mice-2-6---03-03-2011-svb" class="anchor"></a>mice 2.6 - 03-03-2011 / SvB<small> 2011-03-04 </small>
+<a href="#mice-26---03-03-2011--svb" class="anchor"></a>mice 2.6 - 03-03-2011 / SvB<small> 2011-03-04 </small>
 </h1>
 <ul>
 <li>ADDED: bwplot(), stripplot(), densityplot() and xyplot() for creating Trellis graphs</li>
@@ -702,9 +778,9 @@
 <li>CHANGED: default ridge parameter changed</li>
 </ul>
 </div>
-    <div id="mice-2-5---06-01-2011-svb" class="section level1">
+    <div id="mice-25---06-01-2011--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.5">
-<a href="#mice-2-5---06-01-2011-svb" class="anchor"></a>mice 2.5 - 06-01-2011 / SvB<small> 2011-01-06 </small>
+<a href="#mice-25---06-01-2011--svb" class="anchor"></a>mice 2.5 - 06-01-2011 / SvB<small> 2011-01-06 </small>
 </h1>
 <ul>
 <li>ADDED: various stability enhancements and code clean-up</li>
@@ -728,9 +804,9 @@
 <li>FIXED: improved labeling of nhanes2 data</li>
 </ul>
 </div>
-    <div id="mice-2-4---17-10-2010-svb" class="section level1">
+    <div id="mice-24---17-10-2010--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.4">
-<a href="#mice-2-4---17-10-2010-svb" class="anchor"></a>mice 2.4 - 17-10-2010 / SvB<small> 2010-10-18 </small>
+<a href="#mice-24---17-10-2010--svb" class="anchor"></a>mice 2.4 - 17-10-2010 / SvB<small> 2010-10-18 </small>
 </h1>
 <ul>
 <li>ADDED: pool() now supports class ‘polr’ (Jean-Baptiste Pingault)</li>
@@ -740,9 +816,9 @@
 <li>ADDED: cc(), cci() and ccn() convenience functions</li>
 </ul>
 </div>
-    <div id="mice-2-3---14-02-2010-svb" class="section level1">
+    <div id="mice-23---14-02-2010--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.3">
-<a href="#mice-2-3---14-02-2010-svb" class="anchor"></a>mice 2.3 - 14-02-2010 / SvB<small> 2010-02-14 </small>
+<a href="#mice-23---14-02-2010--svb" class="anchor"></a>mice 2.3 - 14-02-2010 / SvB<small> 2010-02-14 </small>
 </h1>
 <ul>
 <li>FIXED: check.method: logicals are now treated as binary variables (Emmanuel Charpentier)</li>
@@ -751,9 +827,9 @@
 <li>FIXED: remove.lindep: returns ‘keep’ vector instead of data</li>
 </ul>
 </div>
-    <div id="mice-2-2---13-01-2010-svb" class="section level1">
+    <div id="mice-22---13-01-2010--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.2">
-<a href="#mice-2-2---13-01-2010-svb" class="anchor"></a>mice 2.2 - 13-01-2010 / SvB<small> 2010-01-14 </small>
+<a href="#mice-22---13-01-2010--svb" class="anchor"></a>mice 2.2 - 13-01-2010 / SvB<small> 2010-01-14 </small>
 </h1>
 <ul>
 <li>ADDED: pool() now supports class ‘multinom’ (Jean-Baptiste Pingault)</li>
@@ -762,9 +838,9 @@
 <li>FIXED: bug fixed in pool() that produced an (innocent) warning message (Qi Zheng)</li>
 </ul>
 </div>
-    <div id="mice-2-1---14-09-2009-svb" class="section level1">
+    <div id="mice-21---14-09-2009--svb" class="section level1">
 <h1 class="page-header" data-toc-text="2.1">
-<a href="#mice-2-1---14-09-2009-svb" class="anchor"></a>mice 2.1 - 14-09-2009 / SvB<small> 2009-09-18 </small>
+<a href="#mice-21---14-09-2009--svb" class="anchor"></a>mice 2.1 - 14-09-2009 / SvB<small> 2009-09-18 </small>
 </h1>
 <ul>
 <li>ADDED: pool() now also supports class ‘mer’</li>
@@ -775,9 +851,9 @@
 <li>FIXED: mice() can now find mice.impute.xxx() functions in the .GlobalEnv</li>
 </ul>
 </div>
-    <div id="mice-2-0---26-08-2009-svb-ko-major-upgrade-for-jss-manuscript" class="section level1">
+    <div id="mice-20---26-08-2009--svb-ko-major-upgrade-for-jss-manuscript" class="section level1">
 <h1 class="page-header" data-toc-text="2.0">
-<a href="#mice-2-0---26-08-2009-svb-ko-major-upgrade-for-jss-manuscript" class="anchor"></a>mice 2.0 - 26-08-2009 / SvB, KO Major upgrade for JSS manuscript<small> 2009-08-27 </small>
+<a href="#mice-20---26-08-2009--svb-ko-major-upgrade-for-jss-manuscript" class="anchor"></a>mice 2.0 - 26-08-2009 / SvB, KO Major upgrade for JSS manuscript<small> 2009-08-27 </small>
 </h1>
 <ul>
 <li>ADDED: new functions cbind.mids(), rbind.mids(), ibind()</li>
@@ -802,9 +878,9 @@
 <li>FIXED: plot.mids() bug fix when number of variables &gt; 5</li>
 </ul>
 </div>
-    <div id="mice-1-21---1532009-svb-maintainance-release" class="section level1">
+    <div id="mice-121---1532009-svb-maintainance-release" class="section level1">
 <h1 class="page-header" data-toc-text="1.21">
-<a href="#mice-1-21---1532009-svb-maintainance-release" class="anchor"></a>mice 1.21 - 15/3/2009 SvB Maintainance release<small> 2009-03-17 </small>
+<a href="#mice-121---1532009-svb-maintainance-release" class="anchor"></a>mice 1.21 - 15/3/2009 SvB Maintainance release<small> 2009-03-17 </small>
 </h1>
 <ul>
 <li>FIXED: Stricter type checking on logicals in mice() to evade warnings.</li>
@@ -814,25 +890,25 @@
 <li>FIXED: existsFunction in check.imputationMethod now works both under S-Plus and R</li>
 </ul>
 </div>
-    <div id="mice-1-16---6252007" class="section level1">
+    <div id="mice-116---6252007" class="section level1">
 <h1 class="page-header" data-toc-text="1.16">
-<a href="#mice-1-16---6252007" class="anchor"></a>mice 1.16 - 6/25/2007<small> 2009-02-19 </small>
+<a href="#mice-116---6252007" class="anchor"></a>mice 1.16 - 6/25/2007<small> 2009-02-19 </small>
 </h1>
 <ul>
 <li>FIXED: The impution function impute.logreg used convergence criteria that were too optimistic when fitting a GLM with glm.fit. Thanks to Ulrike Gromping.</li>
 </ul>
 </div>
-    <div id="mice-1-15---01092006" class="section level1">
+    <div id="mice-115---01092006" class="section level1">
 <h1 class="page-header" data-toc-text="1.15">
-<a href="#mice-1-15---01092006" class="anchor"></a>mice 1.15 - 01/09/2006<small> 2007-01-09 </small>
+<a href="#mice-115---01092006" class="anchor"></a>mice 1.15 - 01/09/2006<small> 2007-01-09 </small>
 </h1>
 <ul>
 <li>FIXED: In the lm.mids and glm.mids functions, parameters were not passed through to glm and lm.</li>
 </ul>
 </div>
-    <div id="mice-1-14r---9262005-1144am" class="section level1">
+    <div id="mice-114r---9262005-1144am" class="section level1">
 <h1 class="page-header" data-toc-text="1.14">
-<a href="#mice-1-14r---9262005-1144am" class="anchor"></a>mice 1.14R - 9/26/2005 11:44AM<small> 2006-04-04 </small>
+<a href="#mice-114r---9262005-1144am" class="anchor"></a>mice 1.14R - 9/26/2005 11:44AM<small> 2006-04-04 </small>
 </h1>
 <ul>
 <li>FIXED: Passive imputation works again. (Roel de Jong)</li>
@@ -842,33 +918,33 @@
 <li>FIXED: Imputation function ‘impute.polyreg’ and ‘impute.lda’ should now work under R</li>
 </ul>
 </div>
-    <div id="mice-1-13" class="section level1">
+    <div id="mice-113" class="section level1">
 <h1 class="page-header" data-toc-text="1.13">
-<a href="#mice-1-13" class="anchor"></a>mice 1.13<small> Unreleased </small>
+<a href="#mice-113" class="anchor"></a>mice 1.13<small> Unreleased </small>
 </h1>
 <ul>
 <li>Changed function checkImputationMethod, Feb 6, 2004</li>
 </ul>
 </div>
-    <div id="mice-1-12" class="section level1">
+    <div id="mice-112" class="section level1">
 <h1 class="page-header" data-toc-text="1.12">
-<a href="#mice-1-12" class="anchor"></a>mice 1.12<small> Unreleased </small>
+<a href="#mice-112" class="anchor"></a>mice 1.12<small> Unreleased </small>
 </h1>
 <ul>
 <li>Maintainance, S-Plus 6.1 and R 1.8 unicode, January 2004</li>
 </ul>
 </div>
-    <div id="mice-1-1" class="section level1">
+    <div id="mice-11" class="section level1">
 <h1 class="page-header" data-toc-text="1.1">
-<a href="#mice-1-1" class="anchor"></a>mice 1.1<small> Unreleased </small>
+<a href="#mice-11" class="anchor"></a>mice 1.1<small> Unreleased </small>
 </h1>
 <ul>
 <li>R version (with help of Peter Malewski and Frank Harrell), Feb 2001</li>
 </ul>
 </div>
-    <div id="mice-1-0" class="section level1">
+    <div id="mice-10" class="section level1">
 <h1 class="page-header" data-toc-text="1.0">
-<a href="#mice-1-0" class="anchor"></a>mice 1.0<small> Unreleased </small>
+<a href="#mice-10" class="anchor"></a>mice 1.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Original S-PLUS release, June 14 2000</li>

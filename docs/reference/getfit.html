@@ -79,7 +79,7 @@ results, or optionally, one of these fit objects." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mice</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.3</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@ results, or optionally, one of these fit objects." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/stefvanbuuren/mice/">
+  <a href="https://github.com/amices/mice/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -125,7 +125,7 @@ results, or optionally, one of these fit objects." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Extract list of fitted model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/stefvanbuuren/mice/blob/master/R/getfit.R'><code>R/getfit.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/amices/mice/blob/master/R/getfit.R'><code>R/getfit.R</code></a></small>
     <div class="hidden name"><code>getfit.Rd</code></div>
     </div>
 
@@ -141,7 +141,7 @@ results, or optionally, one of these fit objects.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An object of class <code>mira</code> or <code>mitml.result</code>, 
+      <td><p>An object of class <code>mira</code> or <code>mitml.result</code>,
 typically produced by a call to <code><a href='https://rdrr.io/r/base/with.html'>with()</a></code>.</p></td>
     </tr>
     <tr>
@@ -157,8 +157,8 @@ repeated analysis. The default <code>i= -1</code> return a list with all analyse
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>i = -1</code> an object of class <code>mitml.result</code> containing 
-all analyses, otherwise it returns the fitted object of 
+    <p>If <code>i = -1</code> an object of class <code>mitml.result</code> containing
+all analyses, otherwise it returns the fitted object of
 the i'th repeated analysis.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -192,7 +192,7 @@ the i'th repeated analysis.</p>
 #&gt;   5   2  bmi  hyp  chl
 #&gt;   5   3  bmi  hyp  chl
 #&gt;   5   4  bmi  hyp  chl
-#&gt;   5   5  bmi  hyp  chl</div><div class='input'><span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='no'>imp</span>, <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>bmi</span>~<span class='no'>chl</span>+<span class='no'>hyp</span>))
+#&gt;   5   5  bmi  hyp  chl</div><div class='input'><span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='no'>imp</span>, <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>bmi</span> ~ <span class='no'>chl</span> + <span class='no'>hyp</span>))
 <span class='fu'>getfit</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; Component 1 :
 #&gt; 
 #&gt; Call:
@@ -200,7 +200,7 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    19.37121      0.04321     -0.98924  
+#&gt;    24.19642      0.01965     -1.55932  
 #&gt; 
 #&gt; 
 #&gt; Component 2 :
@@ -210,7 +210,7 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    19.33455      0.03598     -0.57460  
+#&gt;      23.248        0.031       -2.326  
 #&gt; 
 #&gt; 
 #&gt; Component 3 :
@@ -220,7 +220,7 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    17.69044      0.02971      2.48226  
+#&gt;    19.16797      0.04634     -1.23530  
 #&gt; 
 #&gt; 
 #&gt; Component 4 :
@@ -230,7 +230,7 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    20.50070      0.03807     -1.46880  
+#&gt;    19.09223      0.04044     -0.65796  
 #&gt; 
 #&gt; 
 #&gt; Component 5 :
@@ -240,7 +240,7 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    23.65820      0.03846     -3.63370  
+#&gt;    20.86477      0.04226     -1.48968  
 #&gt; 
 #&gt; </div><div class='input'><span class='fu'>getfit</span>(<span class='no'>fit</span>, <span class='fl'>2</span>)</div><div class='output co'>#&gt; 
 #&gt; Call:
@@ -248,9 +248,8 @@ the i'th repeated analysis.</p>
 #&gt; 
 #&gt; Coefficients:
 #&gt; (Intercept)          chl          hyp  
-#&gt;    19.33455      0.03598     -0.57460  
-#&gt; </div><div class='input'>
-</div></pre>
+#&gt;      23.248        0.031       -2.326  
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

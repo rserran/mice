@@ -15,3 +15,5 @@ index.Rmd
 ^docs*
 _pkgdown.yaml
 .png
+^script$
+^CODE_OF_CONDUCT*

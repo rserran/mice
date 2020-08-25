@@ -3,8 +3,47 @@ title: "News"
 output: github_document
 ---
 
-# mice 3.9.0.9000
+# mice 3.11.3
 
+* Styles all sources files with styler
+* Improves consistency in code and documentation
+* Moves internally defined functions to global namespace
+* Solves bug in internal `sum.scores()`
+* Adds deprecated messages to `lm.mids()`, `glm.mids()`, `pool.compare()`
+* Removes `.pmm.match()` and `expandcov()`
+* Strips out all `return()` calls placed just before end-of-function
+* Remove all trailing spaces
+
+# mice 3.11.2 
+
+* Repairs a bug in the routine for finding the `printFlag` value (#258)
+
+# mice 3.11.1
+
+* Update URL's after transfer to organisation `amices`
+
+# mice 3.11.0
+
+## Major changes
+
+* The Cox model does not return `df.residual`, which caused problematic behavior in the `D1()`, `D2()`, `D3()`, `anova()` and `pool()`. `mice` now extracts the relevant information from other parts of the objects returned by `survival::coxph()`, which solves long-standing issues with the integration of the Cox model (#246).
+* Adds missing `Rccp` dependency to work with `tidyr 1.1.1` (#248).
+
+## Minor changes
+
+* Addresses warnings: `Non-file package-anchored link(s) in documentation object`.
+* Updates on `ampute` documentation (#251).
+* Ask user permission before installing a package from `suggests`.
+
+# mice 3.10.0
+
+## Major changes
+
+* New functions `tidy.mipo()` and `glance.mipo()` return standardized output that conforms to `broom` specifications. Kindly contributed by Vincent Arel Bundock (#240).
+
+## Minor changes
+
+* Solves a problem with the `D3` testing script that produced an error on CRAN (#244).
 
 # mice 3.9.0
 
