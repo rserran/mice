@@ -63,6 +63,18 @@
 #' \code{method='myfunc'}.  To call it only for, say, column 2 specify
 #' \code{method=c('norm','myfunc','logreg',\dots{})}.
 #'
+#' \emph{Skipping imputation:} The user may skip imputation of a column by
+#' setting its entry to the empty method: \code{""}. For complete columns without
+#' missing data \code{mice} will automatically set the empty method. Setting t
+#' he empty method does not produce imputations for the column, so any missing
+#' cells remain \code{NA}. If column A contains \code{NA}'s and is used as
+#' predictor in the imputation model for column B, then \code{mice} produces no
+#' imputations for the rows in B where A is missing. The imputed data
+#' for B may thus contain \code{NA}'s. The remedy is to remove column A from
+#' the imputation model for the other columns in the data. This can be done
+#' by setting the entire column for variable A in the \code{predictorMatrix}
+#' equal to zero.
+#'
 #' \emph{Passive imputation:} \code{mice()} supports a special built-in method,
 #' called passive imputation. This method can be used to ensure that a data
 #' transform always depends on the most recently generated imputations.  In some
@@ -117,22 +129,6 @@
 #' @param data A data frame or a matrix containing the incomplete data.  Missing
 #' values are coded as \code{NA}.
 #' @param m Number of multiple imputations. The default is \code{m=5}.
-#' @param where A data frame or matrix with logicals of the same dimensions
-#' as \code{data} indicating where in the data the imputations should be
-#' created. The default, \code{where = is.na(data)}, specifies that the
-#' missing data should be imputed. The \code{where} argument may be used to
-#' overimpute observed data, or to skip imputations for selected missing values.
-#' @param blocks List of vectors with variable names per block. List elements
-#' may be named to identify blocks. Variables within a block are
-#' imputed by a multivariate imputation method
-#' (see \code{method} argument). By default each variable is placed
-#' into its own block, which is effectively
-#' fully conditional specification (FCS) by univariate models
-#' (variable-by-variable imputation). Only variables whose names appear in
-#' \code{blocks} are imputed. The relevant columns in the \code{where}
-#' matrix are set to \code{FALSE} of variables that are not block members.
-#' A variable may appear in multiple blocks. In that case, it is
-#' effectively re-imputed each time that it is visited.
 #' @param method Can be either a single string, or a vector of strings with
 #' length \code{length(blocks)}, specifying the imputation method to be
 #' used for each column in data. If specified as a single string, the same
@@ -150,6 +146,32 @@
 #' rows and columns with all 1's, except for the diagonal.
 #' Note: For two-level imputation models (which have \code{"2l"} in their names)
 #' other codes (e.g, \code{2} or \code{-2}) are also allowed.
+#' @param ignore A logical vector of \code{nrow(data)} elements indicating
+#' which rows are ignored when creating the imputation model. The default
+#' \code{NULL} includes all rows that have an observed value of the variable
+#' to imputed. Rows with \code{ignore} set to \code{TRUE} do not influence the
+#' parameters of the imputation model, but are still imputed. We may use the
+#' \code{ignore} argument to split \code{data} into a training set (on which the
+#' imputation model is built) and a test set (that does not influence the
+#' imputation model estimates).
+#' Note: Multivariate imputation methods, like \code{mice.impute.jomoImpute()}
+#' or \code{mice.impute.panImpute()}, do not honour the \code{ignore} argument.
+#' @param where A data frame or matrix with logicals of the same dimensions
+#' as \code{data} indicating where in the data the imputations should be
+#' created. The default, \code{where = is.na(data)}, specifies that the
+#' missing data should be imputed. The \code{where} argument may be used to
+#' overimpute observed data, or to skip imputations for selected missing values.
+#' @param blocks List of vectors with variable names per block. List elements
+#' may be named to identify blocks. Variables within a block are
+#' imputed by a multivariate imputation method
+#' (see \code{method} argument). By default each variable is placed
+#' into its own block, which is effectively
+#' fully conditional specification (FCS) by univariate models
+#' (variable-by-variable imputation). Only variables whose names appear in
+#' \code{blocks} are imputed. The relevant columns in the \code{where}
+#' matrix are set to \code{FALSE} of variables that are not block members.
+#' A variable may appear in multiple blocks. In that case, it is
+#' effectively re-imputed each time that it is visited.
 #' @param visitSequence A vector of block names of arbitrary length, specifying the
 #' sequence of blocks that are imputed during one iteration of the Gibbs
 #' sampler. A block is a collection of variables. All variables that are
@@ -197,7 +219,7 @@
 #' are created by a simple random draw from the data. Note that specification of
 #' \code{data.init} will start all \code{m} Gibbs sampling streams from the same
 #' imputation.
-#' @param ... Named arguments that are passed down to the univariate imputation
+#' @param \dots Named arguments that are passed down to the univariate imputation
 #' functions.
 #'
 #' @return Returns an S3 object of class \code{\link[=mids-class]{mids}}
@@ -248,9 +270,11 @@
 #' # imputation on mixed data with a different method per column
 #' mice(nhanes2, meth = c("sample", "pmm", "logreg", "norm"))
 #' @export
-mice <- function(data, m = 5,
+mice <- function(data,
+                 m = 5,
                  method = NULL,
                  predictorMatrix,
+                 ignore = NULL,
                  where = NULL,
                  blocks,
                  visitSequence = NULL,
@@ -258,7 +282,9 @@ mice <- function(data, m = 5,
                  blots = NULL,
                  post = NULL,
                  defaultMethod = c("pmm", "logreg", "polyreg", "polr"),
-                 maxit = 5, printFlag = TRUE, seed = NA,
+                 maxit = 5,
+                 printFlag = TRUE,
+                 seed = NA,
                  data.init = NULL,
                  ...) {
   call <- match.call()
@@ -351,6 +377,7 @@ mice <- function(data, m = 5,
   )
   post <- check.post(post, data)
   blots <- check.blots(blots, data, blocks)
+  ignore <- check.ignore(ignore, data)
 
   # data frame for storing the event log
   state <- list(it = 0, im = 0, dep = "", meth = "", log = FALSE)
@@ -372,7 +399,7 @@ mice <- function(data, m = 5,
   # initialize imputations
   nmis <- apply(is.na(data), 2, sum)
   imp <- initialize.imp(
-    data, m, where, blocks, visitSequence,
+    data, m, ignore, where, blocks, visitSequence,
     method, nmis, data.init
   )
 
@@ -380,9 +407,9 @@ mice <- function(data, m = 5,
   from <- 1
   to <- from + maxit - 1
   q <- sampler(
-    data, m, where, imp, blocks, method, visitSequence,
-    predictorMatrix, formulas, blots, post, c(from, to),
-    printFlag, ...
+    data, m, ignore, where, imp, blocks, method,
+    visitSequence,predictorMatrix, formulas, blots,
+    post, c(from, to), printFlag, ...
   )
 
   if (!state$log) loggedEvents <- NULL
@@ -390,14 +417,20 @@ mice <- function(data, m = 5,
 
   ## save, and return
   midsobj <- list(
-    data = data, imp = q$imp, m = m,
-    where = where, blocks = blocks,
-    call = call, nmis = nmis,
+    data = data,
+    imp = q$imp,
+    m = m,
+    where = where,
+    blocks = blocks,
+    call = call,
+    nmis = nmis,
     method = method,
     predictorMatrix = predictorMatrix,
     visitSequence = visitSequence,
-    formulas = formulas, post = post,
+    formulas = formulas,
+    post = post,
     blots = blots,
+    ignore = ignore,
     seed = seed,
     iteration = q$iteration,
     lastSeedValue = .Random.seed,

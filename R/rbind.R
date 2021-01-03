@@ -12,7 +12,9 @@
 #' If \code{y} is not a \code{mids} object, the columns of \code{x$data}
 #' and \code{y} should match. The \code{where} matrix for \code{y} is set
 #' to \code{FALSE}, signaling that any missing values
-#' in \code{y} were not imputed.
+#' in \code{y} were not imputed. The \code{ignore} vector for \code{y} is
+#' set to \code{FALSE}, elements of \code{y} will therefore influence 
+#' the parameters of the imputation model in future iterations.
 #'
 #' @param x A \code{mids} object.
 #' @param y A \code{mids} object, or a \code{data.frame}, \code{matrix}, \code{factor}
@@ -36,6 +38,7 @@
 #' \code{formulas}  \tab Taken from \code{x$formulas}\cr
 #' \code{post}      \tab Taken from \code{x$post}\cr
 #' \code{blots}     \tab Taken from \code{x$blots}\cr
+#' \code{ignore}    \tab Concatenate \code{x$ignore} and \code{y$ignore}\cr
 #' \code{seed}            \tab Taken from \code{x$seed}\cr
 #' \code{iteration}       \tab Taken from \code{x$iteration}\cr
 #' \code{lastSeedValue}   \tab Taken from \code{x$lastSeedValue}\cr
@@ -95,6 +98,9 @@ rbind.mids <- function(x, y = NULL, ...) {
   wy <- matrix(FALSE, nrow = nrow(y), ncol = ncol(y))
   where <- rbind(x$where, wy)
 
+  # ignore argument: include all new values
+  ignore <- c(x$ignore, rep(FALSE, nrow(y)))
+  
   # The number of imputations in the new midsobject is equal to that in x.
   m <- x$m
 
@@ -127,8 +133,11 @@ rbind.mids <- function(x, y = NULL, ...) {
     method = method,
     predictorMatrix = predictorMatrix,
     visitSequence = visitSequence,
-    formulas = formulas, post = post,
-    blots = blots, seed = seed,
+    formulas = formulas,
+    post = post,
+    blots = blots,
+    ignore = ignore,
+    seed = seed,
     iteration = iteration,
     lastSeedValue = lastSeedValue,
     chainMean = chainMean,
@@ -180,6 +189,7 @@ rbind.mids.mids <- function(x, y, call) {
   post <- x$post
   formulas <- x$formulas
   blots <- x$blots
+  ignore <- c(x$ignore, y$ignore)
   predictorMatrix <- x$predictorMatrix
   visitSequence <- x$visitSequence
 
@@ -218,8 +228,10 @@ rbind.mids.mids <- function(x, y, call) {
     method = method,
     predictorMatrix = predictorMatrix,
     visitSequence = visitSequence,
-    formulas = formulas, post = post,
+    formulas = formulas,
+    post = post,
     blots = blots,
+    ignore = ignore,
     seed = seed,
     iteration = iteration,
     lastSeedValue = lastSeedValue,

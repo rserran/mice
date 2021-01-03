@@ -1,11 +1,12 @@
 #' @import              methods
 #' @importFrom broom    glance tidy
-#' @importFrom dplyr    %>% .data bind_cols bind_rows group_by lead
-#'                      mutate n pull select summarize syms
+#' @importFrom dplyr    %>% bind_cols bind_rows filter group_by lead
+#'                      mutate n pull row_number select summarize
 #' @importFrom graphics abline axis box par plot plot.new plot.window
 #'                      points rect text
 #' @importFrom lattice  bwplot densityplot stripplot xyplot
 #' @importFrom Rcpp     evalCpp
+#' @importFrom rlang    .data syms
 #' @importFrom stats    C aggregate as.formula binomial coef
 #'                      complete.cases confint
 #'                      contr.treatment cor df.residual fitted
@@ -25,5 +26,4 @@
 #' @export stripplot
 #' @export xyplot
 #' @export complete
-#' @useDynLib mice
 NULL

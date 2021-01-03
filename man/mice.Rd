@@ -10,6 +10,7 @@ mice(
   m = 5,
   method = NULL,
   predictorMatrix,
+  ignore = NULL,
   where = NULL,
   blocks,
   visitSequence = NULL,
@@ -48,6 +49,17 @@ By default, the \code{predictorMatrix} is a square matrix of \code{ncol(data)}
 rows and columns with all 1's, except for the diagonal.
 Note: For two-level imputation models (which have \code{"2l"} in their names)
 other codes (e.g, \code{2} or \code{-2}) are also allowed.}
+
+\item{ignore}{A logical vector of \code{nrow(data)} elements indicating
+which rows are ignored when creating the imputation model. The default
+\code{NULL} includes all rows that have an observed value of the variable
+to imputed. Rows with \code{ignore} set to \code{TRUE} do not influence the
+parameters of the imputation model, but are still imputed. We may use the
+\code{ignore} argument to split \code{data} into a training set (on which the
+imputation model is built) and a test set (that does not influence the
+imputation model estimates).
+Note: Multivariate imputation methods, like \code{mice.impute.jomoImpute()}
+or \code{mice.impute.panImpute()}, do not honour the \code{ignore} argument.}
 
 \item{where}{A data frame or matrix with logicals of the same dimensions
 as \code{data} indicating where in the data the imputations should be
@@ -123,7 +135,7 @@ are created by a simple random draw from the data. Note that specification of
 \code{data.init} will start all \code{m} Gibbs sampling streams from the same
 imputation.}
 
-\item{...}{Named arguments that are passed down to the univariate imputation
+\item{\dots}{Named arguments that are passed down to the univariate imputation
 functions.}
 }
 \value{
@@ -217,6 +229,18 @@ mechanism allows uses to write customized imputation function,
 \code{method='myfunc'}.  To call it only for, say, column 2 specify
 \code{method=c('norm','myfunc','logreg',\dots{})}.
 
+\emph{Skipping imputation:} The user may skip imputation of a column by
+setting its entry to the empty method: \code{""}. For complete columns without
+missing data \code{mice} will automatically set the empty method. Setting t
+he empty method does not produce imputations for the column, so any missing
+cells remain \code{NA}. If column A contains \code{NA}'s and is used as
+predictor in the imputation model for column B, then \code{mice} produces no
+imputations for the rows in B where A is missing. The imputed data
+for B may thus contain \code{NA}'s. The remedy is to remove column A from
+the imputation model for the other columns in the data. This can be done
+by setting the entire column for variable A in the \code{predictorMatrix}
+equal to zero.
+
 \emph{Passive imputation:} \code{mice()} supports a special built-in method,
 called passive imputation. This method can be used to ensure that a data
 transform always depends on the most recently generated imputations.  In some
@@ -289,12 +313,12 @@ problems with mice.
 
 We suggest going through these vignettes in the following order
 \enumerate{
-\item \href{https://gerkovink.github.io/miceVignettes/Ad_hoc_and_mice/Ad_hoc_methods.html}{Ad hoc methods and the MICE algorithm}
-\item \href{https://gerkovink.github.io/miceVignettes/Convergence_pooling/Convergence_and_pooling.html}{Convergence and pooling}
-\item \href{https://gerkovink.github.io/miceVignettes/Missingness_inspection/Missingness_inspection.html}{Inspecting how the observed data and missingness are related}
-\item \href{https://gerkovink.github.io/miceVignettes/Passive_Post_processing/Passive_imputation_post_processing.html}{Passive imputation and post-processing}
-\item \href{https://gerkovink.github.io/miceVignettes/Multi_level/Multi_level_data.html}{Imputing multilevel data}
-\item \href{https://gerkovink.github.io/miceVignettes/Sensitivity_analysis/Sensitivity_analysis.html}{Sensitivity analysis with \pkg{mice}}
+\item \href{https://www.gerkovink.com/miceVignettes/Ad_hoc_and_mice/Ad_hoc_methods.html}{Ad hoc methods and the MICE algorithm}
+\item \href{https://www.gerkovink.com/miceVignettes/Convergence_pooling/Convergence_and_pooling.html}{Convergence and pooling}
+\item \href{https://www.gerkovink.com/miceVignettes/Missingness_inspection/Missingness_inspection.html}{Inspecting how the observed data and missingness are related}
+\item \href{https://www.gerkovink.com/miceVignettes/Passive_Post_processing/Passive_imputation_post_processing.html}{Passive imputation and post-processing}
+\item \href{https://www.gerkovink.com/miceVignettes/Multi_level/Multi_level_data.html}{Imputing multilevel data}
+\item \href{https://www.gerkovink.com/miceVignettes/Sensitivity_analysis/Sensitivity_analysis.html}{Sensitivity analysis with \pkg{mice}}
 }
 
 #'Van Buuren, S. (2018).
@@ -313,6 +337,14 @@ concerned missing blood pressure data (Van Buuren et. al., 1999).
 The term \emph{Fully Conditional Specification} was introduced in 2006 to describe a general class of methods that specify imputations model for multivariate data as a set of conditional distributions (Van Buuren et. al., 2006). Further details on mixes of variables and applications can be found in the book
 \href{https://stefvanbuuren.name/fimd/}{\emph{Flexible Imputation of Missing Data. Second Edition.}}
 Chapman & Hall/CRC. Boca Raton, FL.
+}
+
+\section{Enhanced linear algebra}{
+
+
+Updating the BLAS can improve speed of R, sometime considerably. The details
+depend on the operating system. See the discussion in the
+"R Installation and Administration" guide for further information.
 }
 
 \examples{

@@ -40,12 +40,12 @@
 #'
 #' We suggest going through these vignettes in the following order
 #' \enumerate{
-#' \item \href{https://gerkovink.github.io/miceVignettes/Ad_hoc_and_mice/Ad_hoc_methods.html}{Ad hoc methods and the MICE algorithm}
-#' \item \href{https://gerkovink.github.io/miceVignettes/Convergence_pooling/Convergence_and_pooling.html}{Convergence and pooling}
-#' \item \href{https://gerkovink.github.io/miceVignettes/Missingness_inspection/Missingness_inspection.html}{Inspecting how the observed data and missingness are related}
-#' \item \href{https://gerkovink.github.io/miceVignettes/Passive_Post_processing/Passive_imputation_post_processing.html}{Passive imputation and post-processing}
-#' \item \href{https://gerkovink.github.io/miceVignettes/Multi_level/Multi_level_data.html}{Imputing multilevel data}
-#' \item \href{https://gerkovink.github.io/miceVignettes/Sensitivity_analysis/Sensitivity_analysis.html}{Sensitivity analysis with \pkg{mice}}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Ad_hoc_and_mice/Ad_hoc_methods.html}{Ad hoc methods and the MICE algorithm}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Convergence_pooling/Convergence_and_pooling.html}{Convergence and pooling}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Missingness_inspection/Missingness_inspection.html}{Inspecting how the observed data and missingness are related}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Passive_Post_processing/Passive_imputation_post_processing.html}{Passive imputation and post-processing}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Multi_level/Multi_level_data.html}{Imputing multilevel data}
+#' \item \href{https://www.gerkovink.com/miceVignettes/Sensitivity_analysis/Sensitivity_analysis.html}{Sensitivity analysis with \pkg{mice}}
 #' }
 #'
 #' #'Van Buuren, S. (2018).
@@ -64,6 +64,12 @@
 #' \href{https://stefvanbuuren.name/fimd/}{\emph{Flexible Imputation of Missing Data. Second Edition.}}
 #' Chapman & Hall/CRC. Boca Raton, FL.
 #'
+#' @section Enhanced linear algebra:
+#'
+#' Updating the BLAS can improve speed of R, sometime considerably. The details
+#' depend on the operating system. See the discussion in the
+#' "R Installation and Administration" guide for further information.
+#'
 #' @docType package
 #' @name mice
 #' @seealso \code{\link{mice}}, \code{\link{with.mids}},
@@ -77,11 +83,12 @@
 #' Fully conditional specification in multivariate imputation.  \emph{Journal of
 #' Statistical Computation and Simulation}, \bold{76}, 12, 1049--1064.
 #'
-#' van Buuren, S., Groothuis-Oudshoorn, K. (2011). \href{https://www.jstatsoft.org/v45/i03/}{\code{mice}:
-#' Multivariate Imputation by Chained Equations in \code{R}}. \emph{Journal of
-#' Statistical Software}, \bold{45}(3), 1--67.
+#'van Buuren, S., Groothuis-Oudshoorn, K. (2011). \href{https://www.jstatsoft.org/v45/i03/}{\code{mice}:
+#'Multivariate Imputation by Chained Equations in \code{R}}. \emph{Journal of
+#'Statistical Software}, \bold{45}(3), 1--67.
 #'
-#' Van Buuren, S. (2018).
-#' \href{https://stefvanbuuren.name/fimd/}{\emph{Flexible Imputation of Missing Data. Second Edition.}}
-#' Chapman & Hall/CRC. Boca Raton, FL.
+#'Van Buuren, S. (2018).
+#'\href{https://stefvanbuuren.name/fimd/}{\emph{Flexible Imputation of Missing Data. Second Edition.}}
+#'Chapman & Hall/CRC. Boca Raton, FL.
+#'@useDynLib mice, .registration = TRUE
 NULL
