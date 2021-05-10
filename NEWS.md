@@ -3,18 +3,48 @@ title: "News"
 output: github_document
 ---
 
-# mice 3.12.3
+# mice 3.13.7
+
+* Documents the "flat-line behaviour" of `mice.impute.2l.lmer()` to indicate a problem in fitting the imputation model (#385)
+
+# mice 3.13.6
+
+* Solves problem with `Xi <- as.matrix(...)` in `mice.impute.2l.lmer()` that occurred when a cluster contains only one observation (#384)
+* Add reprex to test (#326)
+
+# mice 3.13.5
+
+* Edits the `predictorMatrix` to a monotone pattern if `visitSequence = "monotone"` and `maxit = 1` (#316)
+* Documents that multivariate imputation methods do not support the `post` parameter (#326)
+
+# mice 3.13.4
+
+* Solves a problem with the plot produced by `md.pattern()` (#318, #323)
+* Fixes the intercept in `make.formulas()` (#305, #324)
+* Fixes seed when using `newdata` in `mice.mids()` (#313, #325)
+
+# mice 3.13.3
+
+* Solves a problem with row names of the `where` element created in `rbind()` (#319)
+
+# mice 3.13.2
+
+* Uses the robust standard error estimate for pooling when `pool()` can extract `robust.se` from the object returned by `broom::tidy()` (#310)
+
+# mice 3.13.1
+
+* Solves a bug in mnar imputation routine. Contributed by Margarita Moreno Betancur.
+
+# mice 3.13.0
+
+### Major changes
 
 * Updated `mids2spss()` replaces the `foreign` by `haven` package. Contributed Gerko Vink (#291)
 
-# mice 3.12.2
-
-* Reverts `with.mids()` function to old version because the change in commit 4634094 broke downstream package `metafor` (#292)
-
-# mice 3.12.1
-
 ### Minor changes
 
+* Repairs an error in `tests\testhat\test-D1.R` that failed on `mitml 0.4-0`
+* Reverts `with.mids()` function to old version because the change in commit 4634094 broke downstream package `metafor` (#292)
 * Solves a glitch in `mice.impute.rf()` in finding candidate donors (#288, #289)
 
 # mice 3.12.0

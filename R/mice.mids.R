@@ -47,6 +47,9 @@ mice.mids <- function(obj, newdata = NULL, maxit = 1, printFlag = TRUE, ...) {
     stop("Object should be of type mids.")
   }
 
+  # Set seed to last seed after previous imputation
+  assign(".Random.seed", obj$lastSeedValue, pos = 1)
+
   # obj contains training data, newdata contains test data
   # overwrite obj with combined obj + imp.newdata
   if (!is.null(newdata)) {
@@ -54,13 +57,15 @@ mice.mids <- function(obj, newdata = NULL, maxit = 1, printFlag = TRUE, ...) {
     if (!is.null(obj$ignore)) ignore <- obj$ignore
 
     newdata <- check.newdata(newdata, obj$data)
-    imp.newdata <- mice(newdata, m = obj$m, maxit = 0,
-                        remove.collinear = FALSE,
-                        remove.constant = FALSE)
+    imp.newdata <- mice(newdata,
+      m = obj$m, maxit = 0,
+      remove.collinear = FALSE,
+      remove.constant = FALSE
+    )
     obj <- withCallingHandlers(
       rbind.mids(obj, imp.newdata),
       warning = function(w) {
-        if(grepl("iterations differ", w$message)){
+        if (grepl("iterations differ", w$message)) {
           # Catch warnings concerning iterations, these differ by design
           invokeRestart("muffleWarning")
         }
@@ -94,8 +99,6 @@ mice.mids <- function(obj, newdata = NULL, maxit = 1, printFlag = TRUE, ...) {
   if (is.null(where)) where <- is.na(obj$data)
   blocks <- obj$blocks
   if (is.null(blocks)) blocks <- make.blocks(obj$data)
-
-  assign(".Random.seed", obj$lastSeedValue, pos = 1)
 
   ## OK. Iterate.
   sumIt <- obj$iteration + maxit

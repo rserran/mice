@@ -13,7 +13,7 @@ D2(fit1, fit0 = NULL, use = "wald")
 model in \code{fit0} is a nested within \code{fit1}. The default null
 model \code{fit0 = NULL} compares \code{fit1} to the intercept-only model.}
 
-\item{use}{A character string denoting Wald- or likelihood-based based tests. Can be either \code{"wald"} or \code{"likelihood"}. Only used if \code{method="D2"}.}
+\item{use}{A character string denoting Wald- or likelihood-based based tests. Can be either \code{"wald"} or \code{"likelihood"}. Only used if \code{method = "D2"}.}
 }
 \description{
 The D2-statistic pools test statistics from the repeated analyses.
@@ -25,7 +25,6 @@ imp <- mice(nhanes2, seed = 51009, print = FALSE)
 mi1 <- with(data = imp, expr = lm(bmi ~ age + hyp + chl))
 mi0 <- with(data = imp, expr = lm(bmi ~ age + hyp))
 D2(mi1, mi0)
-
 \donttest{
 # Compare two logistic regression models
 imp <- mice(boys, maxit = 2, print = FALSE)
