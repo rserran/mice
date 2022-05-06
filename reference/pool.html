@@ -40,7 +40,7 @@ this case."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/
     
     <a class="navbar-brand me-2" href="../index.html">mice</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.14.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.14.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -198,7 +198,7 @@ New York: John Wiley and Sons.</p>
 Public Use Microdata Sets. <em>Survey Methodology</em>, <b>29</b>, 181-189.</p>
 <p>van Buuren S and Groothuis-Oudshoorn K (2011). <code>mice</code>: Multivariate
 Imputation by Chained Equations in <code>R</code>. <em>Journal of Statistical
-Software</em>, <b>45</b>(3), 1-67. doi: <a href="https://doi.org/10.18637/jss.v045.i03" class="external-link">10.18637/jss.v045.i03</a></p>
+Software</em>, <b>45</b>(3), 1-67. <a href="https://doi.org/10.18637/jss.v045.i03" class="external-link">doi:10.18637/jss.v045.i03</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -220,10 +220,10 @@ Software</em>, <b>45</b>(3), 1-67. doi: <a href="https://doi.org/10.18637/jss.v0
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2   2  bmi  hyp  chl</span>
 <span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">imp</span>, exp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">bmi</span> <span class="op">~</span> <span class="va">hyp</span> <span class="op">+</span> <span class="va">chl</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">pool</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          term    estimate  std.error  statistic        df    p.value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept) 21.45239222 5.11329825  4.1954119  3.275127 0.02074448</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         hyp -0.76429940 1.96411612 -0.3891315 19.985303 0.70129406</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         chl  0.03178109 0.02309869  1.3758827  4.131669 0.23873471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          term    estimate  std.error   statistic        df      p.value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept) 22.57269116 3.80528266  5.93193547 19.274968 9.784507e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         hyp -0.31841258 3.51336988 -0.09062882  1.662969 9.374901e-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         chl  0.02320814 0.02504631  0.92660905  4.781593 3.984886e-01</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># generate fully synthetic data, analyse and pool</span></span>
 <span class="r-in"><span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="mice.html">mice</a></span><span class="op">(</span><span class="va">cars</span>, maxit <span class="op">=</span> <span class="fl">2</span>, m <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -236,9 +236,9 @@ Software</em>, <b>45</b>(3), 1-67. doi: <a href="https://doi.org/10.18637/jss.v0
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2   2  speed  dist</span>
 <span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">imp</span>, exp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">speed</span> <span class="op">~</span> <span class="va">dist</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">pool.syn</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          term  estimate  std.error statistic       df    p.value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept) 9.6573913 2.38951016  4.041578 1.941997 0.05892958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        dist 0.1150469 0.04313711  2.667005 1.951837 0.11951172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          term  estimate  std.error statistic        df      p.value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 (Intercept) 9.7262192 1.29562789  7.506954  155.7496 4.373391e-12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        dist 0.1349162 0.02399536  5.622595 2899.3882 2.060125e-08</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -250,7 +250,7 @@ Software</em>, <b>45</b>(3), 1-67. doi: <a href="https://doi.org/10.18637/jss.v0
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>

@@ -18,7 +18,7 @@ pan package."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/lib
     
     <a class="navbar-brand me-2" href="../index.html">mice</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.14.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.14.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +136,7 @@ linear mixed-effects models with missing values.  <em>Journal of
 Computational and Graphical Statistics</em>. <b>11</b>, 437-457.</p>
 <p>Van Buuren, S., Groothuis-Oudshoorn, K. (2011). <code>mice</code>: Multivariate
 Imputation by Chained Equations in <code>R</code>. <em>Journal of Statistical
-Software</em>, <b>45</b>(3), 1-67. doi: <a href="https://doi.org/10.18637/jss.v045.i03" class="external-link">10.18637/jss.v045.i03</a></p>
+Software</em>, <b>45</b>(3), 1-67. <a href="https://doi.org/10.18637/jss.v045.i03" class="external-link">doi:10.18637/jss.v045.i03</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -206,32 +206,36 @@ Mathematics Education, Kiel, Germany), <a href="mailto:robitzsch@ipn.uni-kiel.de
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     expand, pack, unpack</span>
 <span class="r-in"><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">x</span> <span class="op">|</span> <span class="va">group</span><span class="op">)</span> <span class="op">+</span> <span class="va">x</span>, data <span class="op">=</span> <span class="fu"><a href="complete.mids.html">complete</a></span><span class="op">(</span><span class="va">imp1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> boundary (singular) fit: see help('isSingular')</span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linear mixed model fit by REML ['lmerMod']</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Formula: y ~ (1 + x | group) + x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Data: complete(imp1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 12902.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 12764.2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Scaled residuals: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Min      1Q  Median      3Q     Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -3.3304 -0.6850  0.0050  0.6791  3.4213 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.4217 -0.6429 -0.0084  0.6689  3.9076 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Random effects:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Groups   Name        Variance Std.Dev. Corr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  group    (Intercept) 0.273723 0.52319      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           x           0.003042 0.05516  0.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             0.688814 0.82995      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Groups   Name        Variance  Std.Dev. Corr </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  group    (Intercept) 2.650e-01 0.514818      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           x           1.266e-06 0.001125 -1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             6.729e-01 0.820291      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 5000, groups:  group, 250</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  0.01913    0.03512   0.545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x            0.32554    0.01267  25.702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  0.03453    0.03456   0.999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x            0.29116    0.01199  24.289</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation of Fixed Effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (Intr)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x 0.039 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x -0.007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> optimizer (nloptwrap) convergence code: 0 (OK)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> boundary (singular) fit: see help('isSingular')</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Examples of predictorMatrix specification</span></span>
 <span class="r-in"></span>
@@ -254,7 +258,7 @@ Mathematics Education, Kiel, Germany), <a href="mailto:robitzsch@ipn.uni-kiel.de
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer></div>
