@@ -97,9 +97,6 @@
     <loc>https://amices.org/mice/reference/cbind.html</loc>
   </url>
   <url>
-    <loc>https://amices.org/mice/reference/cbind.mids.html</loc>
-  </url>
-  <url>
     <loc>https://amices.org/mice/reference/cc.html</loc>
   </url>
   <url>
@@ -152,6 +149,9 @@
   </url>
   <url>
     <loc>https://amices.org/mice/reference/fluxplot.html</loc>
+  </url>
+  <url>
+    <loc>https://amices.org/mice/reference/futuremice.html</loc>
   </url>
   <url>
     <loc>https://amices.org/mice/reference/getfit.html</loc>
@@ -437,9 +437,6 @@
   </url>
   <url>
     <loc>https://amices.org/mice/reference/quickpred.html</loc>
-  </url>
-  <url>
-    <loc>https://amices.org/mice/reference/rbind.mids.html</loc>
   </url>
   <url>
     <loc>https://amices.org/mice/reference/reexports.html</loc>
