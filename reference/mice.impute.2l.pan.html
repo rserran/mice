@@ -14,11 +14,11 @@ pan package."><meta property="og:image" content="https://amices.org/mice/logo.pn
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">mice</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.16.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.16.10</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -223,9 +223,36 @@ Mathematics Education, Kiel, Germany), <a href="mailto:robitzsch@ipn.uni-kiel.de
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     expand, pack, unpack</span>
 <span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">x</span> <span class="op">|</span> <span class="va">group</span><span class="op">)</span> <span class="op">+</span> <span class="va">x</span>, data <span class="op">=</span> <span class="fu"><a href="complete.mids.html">complete</a></span><span class="op">(</span><span class="va">imp1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in initializePtr():</span> function 'cholmod_factor_ldetA' not provided by package 'Matrix'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> boundary (singular) fit: see help('isSingular')</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'object' in selecting a method for function 'summary': object 'mod' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Linear mixed model fit by REML ['lmerMod']</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Formula: y ~ (1 + x | group) + x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Data: complete(imp1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 13126.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Scaled residuals: </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Min      1Q  Median      3Q     Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.4498 -0.6620 -0.0145  0.6770  3.8518 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Random effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Groups   Name        Variance  Std.Dev. Corr </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  group    (Intercept) 0.3460124 0.58823       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           x           0.0001001 0.01001  -1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             0.7169051 0.84670       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 5000, groups:  group, 250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate Std. Error t value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  0.03455    0.03908   0.884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x            0.29829    0.01247  23.922</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Correlation of Fixed Effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   (Intr)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x -0.045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> optimizer (nloptwrap) convergence code: 0 (OK)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> boundary (singular) fit: see help('isSingular')</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Examples of predictorMatrix specification</span></span></span>
 <span class="r-in"><span></span></span>
@@ -248,7 +275,7 @@ Mathematics Education, Kiel, Germany), <a href="mailto:robitzsch@ipn.uni-kiel.de
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
 </div>
 
     </footer></div>
