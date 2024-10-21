@@ -1,3 +1,7 @@
+# mice 3.16.16
+
+* Prevent `as.mids()` from filling the `imp` object for complete variables
+
 # mice 3.16.15
 
 * Initialize single-variables blocks in `make.method()` in a more efficient way (resolves #672)
