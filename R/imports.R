@@ -1,6 +1,5 @@
-#' @import              methods
 #' @importFrom broom    glance tidy
-#' @importFrom dplyr    %>% any_of bind_cols bind_rows filter group_by lead
+#' @importFrom dplyr    .data %>% any_of bind_cols bind_rows filter group_by lead
 #'                      mutate n pull relocate row_number select summarize
 #' @importFrom glmnet   cv.glmnet
 #' @importFrom graphics abline axis box par plot plot.new plot.window
@@ -9,7 +8,6 @@
 #' @importFrom mitml    jomoImpute mitmlComplete panImpute testModels
 #' @importFrom nnet     multinom
 #' @importFrom Rcpp     evalCpp
-#' @importFrom rlang    .data syms
 #' @importFrom rpart    rpart rpart.control
 #' @importFrom stats    C aggregate as.formula binomial cancor coef
 #'                      complete.cases confint
