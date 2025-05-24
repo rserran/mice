@@ -1,3 +1,27 @@
+# mice 3.17.7
+
+- Fixed a long-standing issue in the internal `augment()` function that affected ordered factors. 
+  Previously, `augment()` would:
+  
+  1. Convert ordered factors into unordered ones, and  
+  2. Reorder their levels alphabetically, ignoring the user-specified order.
+
+  This behavior could degrade imputation quality for ordinal outcomes when using the `"polr"` method, 
+  potentially causing model convergence issues or increased noise in imputations.
+
+  The issue did not affect methods for unordered factors (`"logreg"`, `"polyreg"`, `"mnar.logreg"`), 
+  where level order is inconsequential. 
+
+  Thanks to @mmansolf for identifying the problem and suggesting a fix. The updated `augment()` now 
+  correctly preserves the `ordered` class and level order of factor variables.
+- Updates security dependabot to `dawidd6/action-download-artifact@v6`
+
+# mice 3.17.6
+
+* Postpones addition of vignette "Imputation Models in MICE"
+* Adds vignette "Imputation Models in MICE" (experimental) to pkgdown site
+* Updates security dependabot to `dawidd6/action-download-artifact@v6`
+
 # mice 3.17.5
 
 * Changes the behavior of `mice` when passive methods are used without a user-specified `visitSequence`. In this case, `mice` will now automatically move all passive variables to the end of the `visitSequence`, ensuring greater consistency at the end of each iteration.
