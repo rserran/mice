@@ -13,7 +13,7 @@ when one of the arguments is a data.frame."><meta property="og:image" content="h
 
     <a class="navbar-brand me-2" href="../index.html">mice</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.19.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.19.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,7 @@ when one of the arguments is a data.frame."><meta property="og:image" content="h
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/overview.html">Overview</a></li>
     <li><a class="dropdown-item" href="../articles/oldfriends.html">Help for old friends</a></li>
+    <li><a class="dropdown-item" href="../articles/random-effects-2l-bin.html">Random effects strategies in `mice.impute.2l.bin`</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -68,6 +69,23 @@ when one of the arguments is a <code>data.frame</code>.</p>
     the default <code>deparse.level = 1</code> typically and
     <code>deparse.level = 2</code> always construct labels from the argument
     names, see the ‘Value’ section below.</p></dd>
+
+    <dt><code>make.row.names</code></dt>
+<dd><p>(only for data frame method:) logical
+    indicating if unique and valid <code><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></code> should be
+    constructed from the arguments.</p></dd>
+
+    <dt><code>stringsAsFactors</code></dt>
+<dd><p>logical, passed to <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></code>;
+    only has an effect when the <code>...</code> arguments contain a
+    (non-<code>data.frame</code>) <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></code>.</p></dd>
+
+    <dt><code>factor.exclude</code></dt>
+<dd><p>if the data frames contain factors, the default
+    <code>TRUE</code> ensures that <code>NA</code> levels of factors are kept, see
+    <a href="https://bugs.R-project.org/show_bug.cgi?id=17562" class="external-link">PR#17562</a> and the ‘Data frame methods’.  In <span style="R">R</span> versions up
+    to 3.6.x, <code>factor.exclude = NA</code> has been implicitly hardcoded
+    (<span style="R">R</span> &lt;= 3.6.0) or the default (<span style="R">R</span> = 3.6.x, x &gt;= 1).</p></dd>
 
 
 </dl></dd>

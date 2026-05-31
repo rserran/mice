@@ -1,3 +1,18 @@
+
+- Fixes `Error in s$it : $ operator is invalid for atomic vectors` when the data or global environment contains a variable named `state`. The internal logging object is renamed from `state` to `.mice.state` to avoid name collisions (#527). **Breaking change for extension packages:** custom `mice.impute.*` functions that call the internal `mice:::updateLog()` must ensure `.mice.state` is visible in the call stack (it is, when called from within `mice()`). Direct calls to `mice:::updateLog()` outside of the `mice()` Gibbs sampler will fail to find the logging state.
+- Fixes `Error in apply(draws, 2, sum) : dim(X) must have a positive length` in `mice.impute.polr()`, `mice.impute.lda()` and `mice.impute.polyreg()` occuring when only one missing value was present (#684).
+- Fixes `Error in colMeans(as.matrix(imp[[j]]))` crash when data contains character variables. The chain statistics loop now skips character columns, consistent with the existing factor handling (#601)
+
+# mice 3.19.7
+
+- Fixes duplicate CI columns in `summary.mipo()` (#719)
+- Adds `random.effects` argument to `mice.impute.2l.bin()` with options `"laplace"` (default), `"eb"`, and `"marginal"`, implementing the FCS-GLM distinction between sporadic and systematic missingness as described in Audigier et al. (2018). Also vectorises the imputation loop (#686)
+- Adds vignette `random-effects-2l-bin` discussing the three random effects strategies for two-level binary imputation
+
+# mice 3.19.6 
+
+- Fixes `knitr::kable()` and `as.data.frame()` on mipo objects ([#733](https://github.com/amices/mice/issues/733)), The `mipo` class inherited from `data.frame` but is structurally a list, causing `as.data.frame()` to return 0 rows and breaking `knitr::kable()` and `rmarkdown::paged_table()`. Remove the spurious `data.frame` inheritance and add an `as.data.frame.mipo()` method that returns `summary()`.
+
 # mice 3.19.5
 
 - Fixes `mice.impute.midastouch()` producing "invalid factor level" warnings when imputing factors with non-default levels (e.g. `0/1` or labelled factors). The function converted `y` to numeric for internal calculations but returned integer codes instead of the original factor values, causing assignment failures in the completed data. Fix: preserve the original `y` and return from it (#738)
