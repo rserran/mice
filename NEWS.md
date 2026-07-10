@@ -1,3 +1,31 @@
+# mice 3.19.10
+
+- **Breaking change:** Confidence interval columns from `summary(pool(fit), conf.int = TRUE)`,
+  `summary.mipo()` and `pool.table()` are named `conf.low`/`conf.high` (broom convention)
+  instead of the raw `confint()`-style `2.5 %`/`97.5 %` labels. Code that indexes these
+  columns by name should be updated accordingly.
+- Fixes `barnard.rubin()` silently returning only the first element when called
+  with vector `b` and `dfcom = Inf`. The infinite-`dfcom` branch used a scalar
+  `if`, so only the length-1 result was returned instead of a vector matching
+  `b`. Now vectorised with `ifelse()`, consistent with the finite-`dfcom` case.
+- Cleans up the testthat suite: restores or removes commented-out tests,
+  replaces deprecated `context()`/`expect_is()` calls, guards optional-package
+  tests with `skip_if_not_installed()`, and fixes a handful of latent test bugs
+  (a `set.seed <- 818` typo that silently disabled seeding, and a tautological
+  assertion in `test-blocks.R`). No user-facing behavior changes.
+- Adds a stable `<FUNCTION>-<NNN>` ID (e.g. `BARNARD-RUBIN-001`) to every
+  `test_that()` label in the testthat suite, derived from the test file name
+  and assigned in file order. These IDs let this R suite be compared directly
+  against other implementations that share the same scheme,
+  so equivalent test cases are greppable across languages instead of relying
+  on manual cross-referencing. No user-facing behavior changes.
+
+# mice 3.19.9
+
+- Adds `mice.impute.svm()` as a binary variables imputation technique for high 
+  dimensional data based on proper multiple imputation using Support Vector 
+  Machines combined with bootstrapping. Solves (#751) with (#752). Thanks @mtakahashi123
+
 # mice 3.19.8
 
 - Implements new behavior in `mice.mids() that inherits the imputation methods from the trained imputation model rather than re-initializing methods anew. This gives consistent behavior between train and deployment imputation models ([#753](https://github.com/amices/mice/issues/753))
